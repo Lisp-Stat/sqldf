@@ -19,9 +19,7 @@
 
 <h3 align="center">SQLDF</h3>
 
-<p align="center">SQLDF is a Lisp-Stat library for SQL
-  queries on data frames, optimised for memory.
-
+<p align="center">SQLDF is a system for SQL on data frames, optimised for memory.
 	<br />
     <a href="https://lisp-stat.dev/docs/subsets/#sql"><strong>Explore the docs »</strong></a>
     <br />
