@@ -1,0 +1,566 @@
+This is sqldf.info, produced by makeinfo version 6.7 from sqldf.texi.
+
+INFO-DIR-SECTION Common Lisp
+START-INFO-DIR-ENTRY
+* SQLDF Reference: (sqldf). The SQLDF Reference Manual.
+END-INFO-DIR-ENTRY
+
+
+File: sqldf.info,  Node: Top,  Next: Systems,  Prev: (dir),  Up: (dir)
+
+The SQLDF Reference Manual
+**************************
+
+This is the SQLDF Reference Manual, version 1.0.
+
+* Menu:
+
+* Systems:: The systems documentation
+* Files:: The files documentation
+* Packages:: The packages documentation
+* Definitions:: The symbols documentation
+* Indexes:: Concepts, functions, variables and data types
+
+
+File: sqldf.info,  Node: Systems,  Next: Files,  Prev: Top,  Up: Top
+
+1 Systems
+*********
+
+The main system appears first, followed by any subsystem dependency.
+
+* Menu:
+
+* The sqldf system::
+
+
+File: sqldf.info,  Node: The sqldf system,  Prev: Systems,  Up: Systems
+
+1.1 sqldf
+=========
+
+*Author*
+     Steve Nunez <<steve@symbolics.tech>>
+*Home Page*
+     <http://lisp-stat.dev/docs/reference/sqldf/>
+*Source Control*
+     (:git "git://github.com/lisp-stat/sqldf")
+*License*
+     MS-PL
+*Description*
+     SQL for Data Frames
+*Long Description*
+     SQLDF is a library for querying data frames using SQL, optimised
+     for memory consumption.  It uses an in-memory data base for
+     transparent queries.
+*Version*
+     1.0
+*Dependencies*
+        • sqlite
+        • data-frame
+        • select
+*Source*
+     *note sqldf.asd: go to the sqldf․asd file. (file)
+*Directory*
+     s:/src/sqldf/
+*Components*
+        • *note pkgdcl.lisp: go to the sqldf/pkgdcl․lisp file. (file)
+        • *note utils.lisp: go to the sqldf/utils․lisp file. (file)
+        • *note sqldf.lisp: go to the sqldf/sqldf․lisp file. (file)
+
+
+File: sqldf.info,  Node: Files,  Next: Packages,  Prev: Systems,  Up: Top
+
+2 Files
+*******
+
+Files are sorted by type and then listed depth-first from the systems
+components trees.
+
+* Menu:
+
+* Lisp files::
+
+
+File: sqldf.info,  Node: Lisp files,  Prev: Files,  Up: Files
+
+2.1 Lisp
+========
+
+* Menu:
+
+* The sqldf.asd file: The sqldf․asd file.
+* The sqldf/pkgdcl.lisp file: The sqldf/pkgdcl․lisp file.
+* The sqldf/utils.lisp file: The sqldf/utils․lisp file.
+* The sqldf/sqldf.lisp file: The sqldf/sqldf․lisp file.
+
+
+File: sqldf.info,  Node: The sqldf․asd file,  Next: The sqldf/pkgdcl․lisp file,  Prev: Lisp files,  Up: Lisp files
+
+2.1.1 sqldf.asd
+---------------
+
+*Location*
+     sqldf.asd
+*Systems*
+     *note sqldf: go to the sqldf system. (system)
+
+
+File: sqldf.info,  Node: The sqldf/pkgdcl․lisp file,  Next: The sqldf/utils․lisp file,  Prev: The sqldf․asd file,  Up: Lisp files
+
+2.1.2 sqldf/pkgdcl.lisp
+-----------------------
+
+*Parent*
+     *note sqldf: go to the sqldf system. (system)
+*Location*
+     pkgdcl.lisp
+*Packages*
+     *note sqldf: go to the SQLDF package.
+
+
+File: sqldf.info,  Node: The sqldf/utils․lisp file,  Next: The sqldf/sqldf․lisp file,  Prev: The sqldf/pkgdcl․lisp file,  Up: Lisp files
+
+2.1.3 sqldf/utils.lisp
+----------------------
+
+*Dependency*
+     *note pkgdcl.lisp: go to the sqldf/pkgdcl․lisp file. (file)
+*Parent*
+     *note sqldf: go to the sqldf system. (system)
+*Location*
+     utils.lisp
+*Internal Definitions*
+        • *note *downcase-symbols*: go to the SQLDF∶∶*DOWNCASE-SYMBOLS*
+          special variable. (special variable)
+        • *note *escape-sql-names-p*: go to the
+          SQLDF∶∶*ESCAPE-SQL-NAMES-P* special variable. (special
+          variable)
+        • *note *sqlite-reserved-words*: go to the
+          SQLDF∶∶*SQLITE-RESERVED-WORDS* special variable. (special
+          variable)
+        • *note execute-to-column: go to the SQLDF∶∶EXECUTE-TO-COLUMN
+          function. (function)
+        • *note from-sql-name: go to the SQLDF∶∶FROM-SQL-NAME function.
+          (function)
+        • *note sqlite-column-type: go to the SQLDF∶∶SQLITE-COLUMN-TYPE
+          function. (function)
+        • *note statement-column-type: go to the
+          SQLDF∶∶STATEMENT-COLUMN-TYPE function. (function)
+        • *note to-sql-name: go to the SQLDF∶∶TO-SQL-NAME function.
+          (function)
+
+
+File: sqldf.info,  Node: The sqldf/sqldf․lisp file,  Prev: The sqldf/utils․lisp file,  Up: Lisp files
+
+2.1.4 sqldf/sqldf.lisp
+----------------------
+
+*Dependency*
+     *note utils.lisp: go to the sqldf/utils․lisp file. (file)
+*Parent*
+     *note sqldf: go to the sqldf system. (system)
+*Location*
+     sqldf.lisp
+*Exported Definitions*
+        • *note read-sqlite: go to the SQLDF∶∶READ-SQLITE function.
+          (function)
+        • *note sqldf: go to the SQLDF∶∶SQLDF function. (function)
+        • *note write-sqlite: go to the SQLDF∶∶WRITE-SQLITE function.
+          (function)
+*Internal Definitions*
+        • *note create-df-table: go to the SQLDF∶∶CREATE-DF-TABLE
+          function. (function)
+        • *note read-table: go to the SQLDF∶∶READ-TABLE function.
+          (function)
+        • *note write-table: go to the SQLDF∶∶WRITE-TABLE function.
+          (function)
+
+
+File: sqldf.info,  Node: Packages,  Next: Definitions,  Prev: Files,  Up: Top
+
+3 Packages
+**********
+
+Packages are listed by definition order.
+
+* Menu:
+
+* The sqldf package::
+
+
+File: sqldf.info,  Node: The sqldf package,  Prev: Packages,  Up: Packages
+
+3.1 sqldf
+=========
+
+SQLDF is a facility for querying data frames with SQL
+*Source*
+     *note pkgdcl.lisp: go to the sqldf/pkgdcl․lisp file. (file)
+*Use List*
+     common-lisp
+*Used By List*
+     ls-user
+*Exported Definitions*
+        • *note read-sqlite: go to the SQLDF∶∶READ-SQLITE function.
+          (function)
+        • *note sqldf: go to the SQLDF∶∶SQLDF function. (function)
+        • *note write-sqlite: go to the SQLDF∶∶WRITE-SQLITE function.
+          (function)
+*Internal Definitions*
+        • *note *downcase-symbols*: go to the SQLDF∶∶*DOWNCASE-SYMBOLS*
+          special variable. (special variable)
+        • *note *escape-sql-names-p*: go to the
+          SQLDF∶∶*ESCAPE-SQL-NAMES-P* special variable. (special
+          variable)
+        • *note *sqlite-reserved-words*: go to the
+          SQLDF∶∶*SQLITE-RESERVED-WORDS* special variable. (special
+          variable)
+        • *note create-df-table: go to the SQLDF∶∶CREATE-DF-TABLE
+          function. (function)
+        • *note execute-to-column: go to the SQLDF∶∶EXECUTE-TO-COLUMN
+          function. (function)
+        • *note from-sql-name: go to the SQLDF∶∶FROM-SQL-NAME function.
+          (function)
+        • *note read-table: go to the SQLDF∶∶READ-TABLE function.
+          (function)
+        • *note sqlite-column-type: go to the SQLDF∶∶SQLITE-COLUMN-TYPE
+          function. (function)
+        • *note statement-column-type: go to the
+          SQLDF∶∶STATEMENT-COLUMN-TYPE function. (function)
+        • *note to-sql-name: go to the SQLDF∶∶TO-SQL-NAME function.
+          (function)
+        • *note write-table: go to the SQLDF∶∶WRITE-TABLE function.
+          (function)
+
+
+File: sqldf.info,  Node: Definitions,  Next: Indexes,  Prev: Packages,  Up: Top
+
+4 Definitions
+*************
+
+Definitions are sorted by export status, category, package, and then by
+lexicographic order.
+
+* Menu:
+
+* Exported definitions::
+* Internal definitions::
+
+
+File: sqldf.info,  Node: Exported definitions,  Next: Internal definitions,  Prev: Definitions,  Up: Definitions
+
+4.1 Exported definitions
+========================
+
+* Menu:
+
+* Exported functions::
+
+
+File: sqldf.info,  Node: Exported functions,  Prev: Exported definitions,  Up: Exported definitions
+
+4.1.1 Functions
+---------------
+
+ -- Function: read-sqlite DB TABLE
+     Read TABLE and return a data frame with the contents.  Keys are
+     interned in a package with the same name as TABLE.
+     *Package*
+          *note sqldf: go to the SQLDF package.
+     *Source*
+          *note sqldf.lisp: go to the sqldf/sqldf․lisp file. (file)
+ -- Function: sqldf SQL
+     Execute SQL (a string) on a data frame and return a new data frame
+     with the results.
+     The data frame is identified by the word following FROM (case
+     insensitive) in the SQL string.  An in-memory SQLite database is
+     creaetd, the contents of the data frame loaded, the query performed
+     and a new DATA-FRAME returned with the results and the database
+     deleted.  In most cases, using this library is faster, from a
+     developers time perspective, than writing the code to perform the
+     same query.  SQLDF has been tested with data frames of 350K rows
+     with no slow-down noted.  The R documentation for their version of
+     SQLDF suggests that it could be faster than Lisp native queries.
+     Note that the SQL query must use SQL style names for columns and
+     not the Lisp versions, e.g.  flight-time becomes flight_time.
+     *Package*
+          *note sqldf: go to the SQLDF package.
+     *Source*
+          *note sqldf.lisp: go to the sqldf/sqldf․lisp file. (file)
+ -- Function: write-sqlite DB TABLE DF
+     Write data-frame DF to TABLE on connection DB. :na symbols are
+     converted to "NA" strings in the database.
+     *Package*
+          *note sqldf: go to the SQLDF package.
+     *Source*
+          *note sqldf.lisp: go to the sqldf/sqldf․lisp file. (file)
+
+
+File: sqldf.info,  Node: Internal definitions,  Prev: Exported definitions,  Up: Definitions
+
+4.2 Internal definitions
+========================
+
+* Menu:
+
+* Internal special variables::
+* Internal functions::
+
+
+File: sqldf.info,  Node: Internal special variables,  Next: Internal functions,  Prev: Internal definitions,  Up: Internal definitions
+
+4.2.1 Special variables
+-----------------------
+
+ -- Special Variable: *downcase-symbols*
+     *Package*
+          *note sqldf: go to the SQLDF package.
+     *Source*
+          *note utils.lisp: go to the sqldf/utils․lisp file. (file)
+ -- Special Variable: *escape-sql-names-p*
+     *Package*
+          *note sqldf: go to the SQLDF package.
+     *Source*
+          *note utils.lisp: go to the sqldf/utils․lisp file. (file)
+ -- Special Variable: *sqlite-reserved-words*
+     *Package*
+          *note sqldf: go to the SQLDF package.
+     *Source*
+          *note utils.lisp: go to the sqldf/utils․lisp file. (file)
+
+
+File: sqldf.info,  Node: Internal functions,  Prev: Internal special variables,  Up: Internal definitions
+
+4.2.2 Functions
+---------------
+
+ -- Function: create-df-table DB TABLE DF
+     Create a database table of NAME in DB according to the schema of
+     DF. This function is to create a table for DF prior to loading.
+     Lisp style symbol names are converted to SQL compatible names.
+     *Package*
+          *note sqldf: go to the SQLDF package.
+     *Source*
+          *note sqldf.lisp: go to the sqldf/sqldf․lisp file. (file)
+ -- Function: execute-to-column DB SQL &rest PARAMETERS
+     *Package*
+          *note sqldf: go to the SQLDF package.
+     *Source*
+          *note utils.lisp: go to the sqldf/utils․lisp file. (file)
+ -- Function: from-sql-name STR
+     Convert a string to a symbol, upcasing and replacing underscores
+     with hyphens.
+     *Package*
+          *note sqldf: go to the SQLDF package.
+     *Source*
+          *note utils.lisp: go to the sqldf/utils․lisp file. (file)
+ -- Function: read-table DB TABLE
+     Read TABLE and return a data frame with the contents.  Keys are
+     interned in a package with the same name as TABLE.
+     *Package*
+          *note sqldf: go to the SQLDF package.
+     *Source*
+          *note sqldf.lisp: go to the sqldf/sqldf․lisp file. (file)
+ -- Function: sqlite-column-type SEQUENCE
+     Return a format string for the most general type found in sequence
+     Use this for sequences of type T to determine how to declare the
+     column to SQLite.
+     *Package*
+          *note sqldf: go to the SQLDF package.
+     *Source*
+          *note utils.lisp: go to the sqldf/utils․lisp file. (file)
+ -- Function: statement-column-type STMT COLUMN-NUMBER
+     Return the type string of a column of a query statement
+     *Package*
+          *note sqldf: go to the SQLDF package.
+     *Source*
+          *note utils.lisp: go to the sqldf/utils․lisp file. (file)
+ -- Function: to-sql-name ()
+     Convert a symbol or string into a name that can be a sql table,
+     column, or operation name.  Add quotes when escape-p is true, or
+     escape-p is :auto and the name contains reserved words.  Quoted or
+     delimited identifiers can be used by passing :literal as the value
+     of escape-p.  If escape-p is :literal, and the name is a string
+     then the string is still escaped but the symbol or string is not
+     downcased, regardless of the setting for *downcase-symbols* and the
+     hyphen and forward slash characters are not replaced with
+     underscores.  Ignore-reserved-words is only used internally for
+     column names which are allowed to be reserved words, but it is not
+     recommended.
+     *Package*
+          *note sqldf: go to the SQLDF package.
+     *Source*
+          *note utils.lisp: go to the sqldf/utils․lisp file. (file)
+ -- Function: write-table DB TABLE DF
+     Write data-frame DF to TABLE on connection DB. :na symbols are
+     converted to "NA" strings in the database.
+     *Package*
+          *note sqldf: go to the SQLDF package.
+     *Source*
+          *note sqldf.lisp: go to the sqldf/sqldf․lisp file. (file)
+
+
+File: sqldf.info,  Node: Indexes,  Prev: Definitions,  Up: Top
+
+Appendix A Indexes
+******************
+
+* Menu:
+
+* Concept index::
+* Function index::
+* Variable index::
+* Data type index::
+
+
+File: sqldf.info,  Node: Concept index,  Next: Function index,  Prev: Indexes,  Up: Indexes
+
+A.1 Concepts
+============
+
+ [index ]
+* Menu:
+
+* File, Lisp, sqldf.asd:                 The sqldf․asd file.    (line 6)
+* File, Lisp, sqldf/pkgdcl.lisp:         The sqldf/pkgdcl․lisp file.
+                                                                (line 6)
+* File, Lisp, sqldf/sqldf.lisp:          The sqldf/sqldf․lisp file.
+                                                                (line 6)
+* File, Lisp, sqldf/utils.lisp:          The sqldf/utils․lisp file.
+                                                                (line 6)
+* Lisp File, sqldf.asd:                  The sqldf․asd file.    (line 6)
+* Lisp File, sqldf/pkgdcl.lisp:          The sqldf/pkgdcl․lisp file.
+                                                                (line 6)
+* Lisp File, sqldf/sqldf.lisp:           The sqldf/sqldf․lisp file.
+                                                                (line 6)
+* Lisp File, sqldf/utils.lisp:           The sqldf/utils․lisp file.
+                                                                (line 6)
+* sqldf.asd:                             The sqldf․asd file.    (line 6)
+* sqldf/pkgdcl.lisp:                     The sqldf/pkgdcl․lisp file.
+                                                                (line 6)
+* sqldf/sqldf.lisp:                      The sqldf/sqldf․lisp file.
+                                                                (line 6)
+* sqldf/utils.lisp:                      The sqldf/utils․lisp file.
+                                                                (line 6)
+
+
+File: sqldf.info,  Node: Function index,  Next: Variable index,  Prev: Concept index,  Up: Indexes
+
+A.2 Functions
+=============
+
+ [index ]
+* Menu:
+
+* create-df-table:                       Internal functions.   (line  6)
+* execute-to-column:                     Internal functions.   (line 14)
+* from-sql-name:                         Internal functions.   (line 19)
+* Function, create-df-table:             Internal functions.   (line  7)
+* Function, execute-to-column:           Internal functions.   (line 15)
+* Function, from-sql-name:               Internal functions.   (line 20)
+* Function, read-sqlite:                 Exported functions.   (line  7)
+* Function, read-table:                  Internal functions.   (line 27)
+* Function, sqldf:                       Exported functions.   (line 14)
+* Function, sqlite-column-type:          Internal functions.   (line 34)
+* Function, statement-column-type:       Internal functions.   (line 42)
+* Function, to-sql-name:                 Internal functions.   (line 48)
+* Function, write-sqlite:                Exported functions.   (line 32)
+* Function, write-table:                 Internal functions.   (line 64)
+* read-sqlite:                           Exported functions.   (line  6)
+* read-table:                            Internal functions.   (line 26)
+* sqldf:                                 Exported functions.   (line 13)
+* sqlite-column-type:                    Internal functions.   (line 33)
+* statement-column-type:                 Internal functions.   (line 41)
+* to-sql-name:                           Internal functions.   (line 47)
+* write-sqlite:                          Exported functions.   (line 31)
+* write-table:                           Internal functions.   (line 63)
+
+
+File: sqldf.info,  Node: Variable index,  Next: Data type index,  Prev: Function index,  Up: Indexes
+
+A.3 Variables
+=============
+
+ [index ]
+* Menu:
+
+* *downcase-symbols*:                    Internal special variables.
+                                                               (line  6)
+* *escape-sql-names-p*:                  Internal special variables.
+                                                               (line 11)
+* *sqlite-reserved-words*:               Internal special variables.
+                                                               (line 16)
+* Special Variable, *downcase-symbols*:  Internal special variables.
+                                                               (line  7)
+* Special Variable, *escape-sql-names-p*: Internal special variables.
+                                                               (line 12)
+* Special Variable, *sqlite-reserved-words*: Internal special variables.
+                                                               (line 17)
+
+
+File: sqldf.info,  Node: Data type index,  Prev: Variable index,  Up: Indexes
+
+A.4 Data types
+==============
+
+ [index ]
+* Menu:
+
+* Package, sqldf:                        The sqldf package.     (line 6)
+* sqldf:                                 The sqldf system.      (line 6)
+* sqldf <1>:                             The sqldf package.     (line 6)
+* System, sqldf:                         The sqldf system.      (line 6)
+
+
+
+Tag Table:
+Node: Top197
+Node: Systems598
+Node: The sqldf system792
+Ref: go to the sqldf system888
+Node: Files1729
+Node: Lisp files1937
+Node: The sqldf․asd file2251
+Ref: go to the sqldf․asd file2406
+Node: The sqldf/pkgdcl․lisp file2494
+Ref: go to the sqldf/pkgdcl․lisp file2682
+Node: The sqldf/utils․lisp file2825
+Ref: go to the sqldf/utils․lisp file3018
+Node: The sqldf/sqldf․lisp file4143
+Ref: go to the sqldf/sqldf․lisp file4299
+Node: Packages5067
+Node: The sqldf package5245
+Ref: go to the SQLDF package5344
+Node: Definitions7067
+Node: Exported definitions7333
+Node: Exported functions7533
+Ref: go to the SQLDF∶∶READ-SQLITE function7704
+Ref: go to the SQLDF∶∶SQLDF function8000
+Ref: go to the SQLDF∶∶WRITE-SQLITE function9047
+Node: Internal definitions9311
+Node: Internal special variables9522
+Ref: go to the SQLDF∶∶*DOWNCASE-SYMBOLS* special variable9750
+Ref: go to the SQLDF∶∶*ESCAPE-SQL-NAMES-P* special variable9940
+Ref: go to the SQLDF∶∶*SQLITE-RESERVED-WORDS* special variable10133
+Node: Internal functions10281
+Ref: go to the SQLDF∶∶CREATE-DF-TABLE function10465
+Ref: go to the SQLDF∶∶EXECUTE-TO-COLUMN function10875
+Ref: go to the SQLDF∶∶FROM-SQL-NAME function11054
+Ref: go to the SQLDF∶∶READ-TABLE function11324
+Ref: go to the SQLDF∶∶SQLITE-COLUMN-TYPE function11638
+Ref: go to the SQLDF∶∶STATEMENT-COLUMN-TYPE function12005
+Ref: go to the SQLDF∶∶TO-SQL-NAME function12242
+Ref: go to the SQLDF∶∶WRITE-TABLE function13144
+Node: Indexes13408
+Node: Concept index13599
+Node: Function index15258
+Node: Variable index17017
+Node: Data type index18029
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
