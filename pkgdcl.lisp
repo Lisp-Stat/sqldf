@@ -11,7 +11,7 @@
 		#:column
 		#:alist-df)
   (:export #:sqldf			;query a data frame
-	   #:read-sqlite		;read a SQLite table into a data frame
-	   #:write-sqlite)		;write a data frame into a SQLite table
+	   #:read-table	        	;read a SQLite table into a data frame
+	   #:write-table)		;write a data frame into a SQLite table
   (:documentation "SQLDF is a facility for querying data frames with SQL"))
 

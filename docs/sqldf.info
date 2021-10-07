@@ -11,7 +11,7 @@ File: sqldf.info,  Node: Top,  Next: Systems,  Prev: (dir),  Up: (dir)
 The SQLDF Reference Manual
 **************************
 
-This is the SQLDF Reference Manual, version 1.0.
+This is the SQLDF Reference Manual, version 1.1.
 
 * Menu:
 
@@ -51,10 +51,10 @@ File: sqldf.info,  Node: The sqldf system,  Prev: Systems,  Up: Systems
      SQL for Data Frames
 *Long Description*
      SQLDF is a library for querying data frames using SQL, optimised
-     for memory consumption.  It uses an in-memory data base for
-     transparent queries.
+     for convenience over memory consumption.  It uses an in-memory data
+     base for transparent queries.
 *Version*
-     1.0
+     1.1
 *Dependencies*
         • sqlite
         • data-frame
@@ -163,18 +163,14 @@ File: sqldf.info,  Node: The sqldf/sqldf․lisp file,  Prev: The sqldf/utils․l
 *Location*
      sqldf.lisp
 *Exported Definitions*
-        • *note read-sqlite: go to the SQLDF∶∶READ-SQLITE function.
-          (function)
-        • *note sqldf: go to the SQLDF∶∶SQLDF function. (function)
-        • *note write-sqlite: go to the SQLDF∶∶WRITE-SQLITE function.
-          (function)
-*Internal Definitions*
-        • *note create-df-table: go to the SQLDF∶∶CREATE-DF-TABLE
-          function. (function)
         • *note read-table: go to the SQLDF∶∶READ-TABLE function.
           (function)
+        • *note sqldf: go to the SQLDF∶∶SQLDF function. (function)
         • *note write-table: go to the SQLDF∶∶WRITE-TABLE function.
           (function)
+*Internal Definitions*
+     *note create-df-table: go to the SQLDF∶∶CREATE-DF-TABLE function.
+     (function)
 
 
 File: sqldf.info,  Node: Packages,  Next: Definitions,  Prev: Files,  Up: Top
@@ -199,13 +195,11 @@ SQLDF is a facility for querying data frames with SQL
      *note pkgdcl.lisp: go to the sqldf/pkgdcl․lisp file. (file)
 *Use List*
      common-lisp
-*Used By List*
-     ls-user
 *Exported Definitions*
-        • *note read-sqlite: go to the SQLDF∶∶READ-SQLITE function.
+        • *note read-table: go to the SQLDF∶∶READ-TABLE function.
           (function)
         • *note sqldf: go to the SQLDF∶∶SQLDF function. (function)
-        • *note write-sqlite: go to the SQLDF∶∶WRITE-SQLITE function.
+        • *note write-table: go to the SQLDF∶∶WRITE-TABLE function.
           (function)
 *Internal Definitions*
         • *note *downcase-symbols*: go to the SQLDF∶∶*DOWNCASE-SYMBOLS*
@@ -222,15 +216,11 @@ SQLDF is a facility for querying data frames with SQL
           function. (function)
         • *note from-sql-name: go to the SQLDF∶∶FROM-SQL-NAME function.
           (function)
-        • *note read-table: go to the SQLDF∶∶READ-TABLE function.
-          (function)
         • *note sqlite-column-type: go to the SQLDF∶∶SQLITE-COLUMN-TYPE
           function. (function)
         • *note statement-column-type: go to the
           SQLDF∶∶STATEMENT-COLUMN-TYPE function. (function)
         • *note to-sql-name: go to the SQLDF∶∶TO-SQL-NAME function.
-          (function)
-        • *note write-table: go to the SQLDF∶∶WRITE-TABLE function.
           (function)
 
 
@@ -263,7 +253,7 @@ File: sqldf.info,  Node: Exported functions,  Prev: Exported definitions,  Up: E
 4.1.1 Functions
 ---------------
 
- -- Function: read-sqlite DB TABLE
+ -- Function: read-table DB TABLE
      Read TABLE and return a data frame with the contents.  Keys are
      interned in a package with the same name as TABLE.
      *Package*
@@ -288,7 +278,7 @@ File: sqldf.info,  Node: Exported functions,  Prev: Exported definitions,  Up: E
           *note sqldf: go to the SQLDF package.
      *Source*
           *note sqldf.lisp: go to the sqldf/sqldf․lisp file. (file)
- -- Function: write-sqlite DB TABLE DF
+ -- Function: write-table DB TABLE DF
      Write data-frame DF to TABLE on connection DB. :na symbols are
      converted to "NA" strings in the database.
      *Package*
@@ -355,13 +345,6 @@ File: sqldf.info,  Node: Internal functions,  Prev: Internal special variables, 
           *note sqldf: go to the SQLDF package.
      *Source*
           *note utils.lisp: go to the sqldf/utils․lisp file. (file)
- -- Function: read-table DB TABLE
-     Read TABLE and return a data frame with the contents.  Keys are
-     interned in a package with the same name as TABLE.
-     *Package*
-          *note sqldf: go to the SQLDF package.
-     *Source*
-          *note sqldf.lisp: go to the sqldf/sqldf․lisp file. (file)
  -- Function: sqlite-column-type SEQUENCE
      Return a format string for the most general type found in sequence
      Use this for sequences of type T to determine how to declare the
@@ -392,13 +375,6 @@ File: sqldf.info,  Node: Internal functions,  Prev: Internal special variables, 
           *note sqldf: go to the SQLDF package.
      *Source*
           *note utils.lisp: go to the sqldf/utils․lisp file. (file)
- -- Function: write-table DB TABLE DF
-     Write data-frame DF to TABLE on connection DB. :na symbols are
-     converted to "NA" strings in the database.
-     *Package*
-          *note sqldf: go to the SQLDF package.
-     *Source*
-          *note sqldf.lisp: go to the sqldf/sqldf․lisp file. (file)
 
 
 File: sqldf.info,  Node: Indexes,  Prev: Definitions,  Up: Top
@@ -459,22 +435,18 @@ A.2 Functions
 * Function, create-df-table:             Internal functions.   (line  7)
 * Function, execute-to-column:           Internal functions.   (line 15)
 * Function, from-sql-name:               Internal functions.   (line 20)
-* Function, read-sqlite:                 Exported functions.   (line  7)
-* Function, read-table:                  Internal functions.   (line 27)
+* Function, read-table:                  Exported functions.   (line  7)
 * Function, sqldf:                       Exported functions.   (line 14)
-* Function, sqlite-column-type:          Internal functions.   (line 34)
-* Function, statement-column-type:       Internal functions.   (line 42)
-* Function, to-sql-name:                 Internal functions.   (line 48)
-* Function, write-sqlite:                Exported functions.   (line 32)
-* Function, write-table:                 Internal functions.   (line 64)
-* read-sqlite:                           Exported functions.   (line  6)
-* read-table:                            Internal functions.   (line 26)
+* Function, sqlite-column-type:          Internal functions.   (line 27)
+* Function, statement-column-type:       Internal functions.   (line 35)
+* Function, to-sql-name:                 Internal functions.   (line 41)
+* Function, write-table:                 Exported functions.   (line 32)
+* read-table:                            Exported functions.   (line  6)
 * sqldf:                                 Exported functions.   (line 13)
-* sqlite-column-type:                    Internal functions.   (line 33)
-* statement-column-type:                 Internal functions.   (line 41)
-* to-sql-name:                           Internal functions.   (line 47)
-* write-sqlite:                          Exported functions.   (line 31)
-* write-table:                           Internal functions.   (line 63)
+* sqlite-column-type:                    Internal functions.   (line 26)
+* statement-column-type:                 Internal functions.   (line 34)
+* to-sql-name:                           Internal functions.   (line 40)
+* write-table:                           Exported functions.   (line 31)
 
 
 File: sqldf.info,  Node: Variable index,  Next: Data type index,  Prev: Function index,  Up: Indexes
@@ -519,44 +491,42 @@ Node: Top197
 Node: Systems598
 Node: The sqldf system792
 Ref: go to the sqldf system888
-Node: Files1729
-Node: Lisp files1937
-Node: The sqldf․asd file2251
-Ref: go to the sqldf․asd file2406
-Node: The sqldf/pkgdcl․lisp file2494
-Ref: go to the sqldf/pkgdcl․lisp file2682
-Node: The sqldf/utils․lisp file2825
-Ref: go to the sqldf/utils․lisp file3018
-Node: The sqldf/sqldf․lisp file4143
-Ref: go to the sqldf/sqldf․lisp file4299
-Node: Packages5067
-Node: The sqldf package5245
-Ref: go to the SQLDF package5344
-Node: Definitions7067
-Node: Exported definitions7333
-Node: Exported functions7533
-Ref: go to the SQLDF∶∶READ-SQLITE function7704
-Ref: go to the SQLDF∶∶SQLDF function8000
-Ref: go to the SQLDF∶∶WRITE-SQLITE function9047
-Node: Internal definitions9311
-Node: Internal special variables9522
-Ref: go to the SQLDF∶∶*DOWNCASE-SYMBOLS* special variable9750
-Ref: go to the SQLDF∶∶*ESCAPE-SQL-NAMES-P* special variable9940
-Ref: go to the SQLDF∶∶*SQLITE-RESERVED-WORDS* special variable10133
-Node: Internal functions10281
-Ref: go to the SQLDF∶∶CREATE-DF-TABLE function10465
-Ref: go to the SQLDF∶∶EXECUTE-TO-COLUMN function10875
-Ref: go to the SQLDF∶∶FROM-SQL-NAME function11054
-Ref: go to the SQLDF∶∶READ-TABLE function11324
-Ref: go to the SQLDF∶∶SQLITE-COLUMN-TYPE function11638
-Ref: go to the SQLDF∶∶STATEMENT-COLUMN-TYPE function12005
-Ref: go to the SQLDF∶∶TO-SQL-NAME function12242
-Ref: go to the SQLDF∶∶WRITE-TABLE function13144
-Node: Indexes13408
-Node: Concept index13599
-Node: Function index15258
-Node: Variable index17017
-Node: Data type index18029
+Node: Files1746
+Node: Lisp files1954
+Node: The sqldf․asd file2268
+Ref: go to the sqldf․asd file2423
+Node: The sqldf/pkgdcl․lisp file2511
+Ref: go to the sqldf/pkgdcl․lisp file2699
+Node: The sqldf/utils․lisp file2842
+Ref: go to the sqldf/utils․lisp file3035
+Node: The sqldf/sqldf․lisp file4160
+Ref: go to the sqldf/sqldf․lisp file4316
+Node: Packages4880
+Node: The sqldf package5058
+Ref: go to the SQLDF package5157
+Node: Definitions6660
+Node: Exported definitions6926
+Node: Exported functions7126
+Ref: go to the SQLDF∶∶READ-TABLE function7296
+Ref: go to the SQLDF∶∶SQLDF function7592
+Ref: go to the SQLDF∶∶WRITE-TABLE function8638
+Node: Internal definitions8902
+Node: Internal special variables9113
+Ref: go to the SQLDF∶∶*DOWNCASE-SYMBOLS* special variable9341
+Ref: go to the SQLDF∶∶*ESCAPE-SQL-NAMES-P* special variable9531
+Ref: go to the SQLDF∶∶*SQLITE-RESERVED-WORDS* special variable9724
+Node: Internal functions9872
+Ref: go to the SQLDF∶∶CREATE-DF-TABLE function10056
+Ref: go to the SQLDF∶∶EXECUTE-TO-COLUMN function10466
+Ref: go to the SQLDF∶∶FROM-SQL-NAME function10645
+Ref: go to the SQLDF∶∶SQLITE-COLUMN-TYPE function10923
+Ref: go to the SQLDF∶∶STATEMENT-COLUMN-TYPE function11290
+Ref: go to the SQLDF∶∶TO-SQL-NAME function11527
+Node: Indexes12392
+Node: Concept index12583
+Node: Function index14242
+Node: Variable index15709
+Node: Data type index16721
 
 End Tag Table
 

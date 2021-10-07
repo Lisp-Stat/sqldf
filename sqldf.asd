@@ -3,7 +3,7 @@
 
 (asdf:defsystem #:sqldf
   :description "SQL for Data Frames"
-  :long-description "SQLDF is a library for querying data frames using SQL, optimised for memory consumption. It uses an in-memory data base for transparent queries."
+  :long-description "SQLDF is a library for querying data frames using SQL, optimised for convenience over memory consumption. It uses an in-memory data base for transparent queries."
   :license  :MS-PL
   :version     (:read-file-form "version.sexp")
   :author  "Steve Nunez <steve@symbolics.tech>"

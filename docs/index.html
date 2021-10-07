@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>The SQLDF Reference Manual</title>
 
-<meta name="description" content="The SQLDF Reference Manual, version 1.0.">
+<meta name="description" content="The SQLDF Reference Manual, version 1.1.">
 <meta name="keywords" content="The SQLDF Reference Manual">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
@@ -138,7 +138,7 @@ ul.no-bullet {list-style: none}
 Next: <a href="#Systems" accesskey="n" rel="next">Systems</a>, Previous: <a href="dir.html#Top" accesskey="p" rel="prev">(dir)</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="The-SQLDF-Reference-Manual"></span><h1 class="top">The SQLDF Reference Manual</h1>
-<p>This is the SQLDF Reference Manual, version 1.0.
+<p>This is the SQLDF Reference Manual, version 1.1.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Systems" accesskey="1">Systems</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The systems documentation
@@ -194,10 +194,10 @@ Previous: <a href="#Systems" accesskey="p" rel="prev">Systems</a>, Up: <a href="
 <dd><p>SQL for Data Frames
 </p></dd>
 <dt><strong>Long Description</strong></dt>
-<dd><p>SQLDF is a library for querying data frames using SQL, optimised for memory consumption. It uses an in-memory data base for transparent queries.
+<dd><p>SQLDF is a library for querying data frames using SQL, optimised for convenience over memory consumption. It uses an in-memory data base for transparent queries.
 </p></dd>
 <dt><strong>Version</strong></dt>
-<dd><p>1.0
+<dd><p>1.1
 </p></dd>
 <dt><strong>Dependencies</strong></dt>
 <dd><ul>
@@ -348,18 +348,14 @@ Previous: <a href="#The-sqldf_002futils_2024lisp-file" accesskey="p" rel="prev">
 </p></dd>
 <dt><strong>Exported Definitions</strong></dt>
 <dd><ul>
-<li> <a href="#go-to-the-SQLDF_2236_2236READ_002dSQLITE-function"><tt>read-sqlite</tt></a> (function)
+<li> <a href="#go-to-the-SQLDF_2236_2236READ_002dTABLE-function"><tt>read-table</tt></a> (function)
 </li><li> <a href="#go-to-the-SQLDF_2236_2236SQLDF-function"><tt>sqldf</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236WRITE_002dSQLITE-function"><tt>write-sqlite</tt></a> (function)
-</li></ul>
-</dd>
-<dt><strong>Internal Definitions</strong></dt>
-<dd><ul>
-<li> <a href="#go-to-the-SQLDF_2236_2236CREATE_002dDF_002dTABLE-function"><tt>create-df-table</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236READ_002dTABLE-function"><tt>read-table</tt></a> (function)
 </li><li> <a href="#go-to-the-SQLDF_2236_2236WRITE_002dTABLE-function"><tt>write-table</tt></a> (function)
 </li></ul>
 </dd>
+<dt><strong>Internal Definitions</strong></dt>
+<dd><p><a href="#go-to-the-SQLDF_2236_2236CREATE_002dDF_002dTABLE-function"><tt>create-df-table</tt></a> (function)
+</p></dd>
 </dl>
 
 
@@ -394,14 +390,11 @@ Previous: <a href="#Packages" accesskey="p" rel="prev">Packages</a>, Up: <a href
 <dt><strong>Use List</strong></dt>
 <dd><p><tt>common-lisp</tt>
 </p></dd>
-<dt><strong>Used By List</strong></dt>
-<dd><p><tt>ls-user</tt>
-</p></dd>
 <dt><strong>Exported Definitions</strong></dt>
 <dd><ul>
-<li> <a href="#go-to-the-SQLDF_2236_2236READ_002dSQLITE-function"><tt>read-sqlite</tt></a> (function)
+<li> <a href="#go-to-the-SQLDF_2236_2236READ_002dTABLE-function"><tt>read-table</tt></a> (function)
 </li><li> <a href="#go-to-the-SQLDF_2236_2236SQLDF-function"><tt>sqldf</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236WRITE_002dSQLITE-function"><tt>write-sqlite</tt></a> (function)
+</li><li> <a href="#go-to-the-SQLDF_2236_2236WRITE_002dTABLE-function"><tt>write-table</tt></a> (function)
 </li></ul>
 </dd>
 <dt><strong>Internal Definitions</strong></dt>
@@ -412,11 +405,9 @@ Previous: <a href="#Packages" accesskey="p" rel="prev">Packages</a>, Up: <a href
 </li><li> <a href="#go-to-the-SQLDF_2236_2236CREATE_002dDF_002dTABLE-function"><tt>create-df-table</tt></a> (function)
 </li><li> <a href="#go-to-the-SQLDF_2236_2236EXECUTE_002dTO_002dCOLUMN-function"><tt>execute-to-column</tt></a> (function)
 </li><li> <a href="#go-to-the-SQLDF_2236_2236FROM_002dSQL_002dNAME-function"><tt>from-sql-name</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236READ_002dTABLE-function"><tt>read-table</tt></a> (function)
 </li><li> <a href="#go-to-the-SQLDF_2236_2236SQLITE_002dCOLUMN_002dTYPE-function"><tt>sqlite-column-type</tt></a> (function)
 </li><li> <a href="#go-to-the-SQLDF_2236_2236STATEMENT_002dCOLUMN_002dTYPE-function"><tt>statement-column-type</tt></a> (function)
 </li><li> <a href="#go-to-the-SQLDF_2236_2236TO_002dSQL_002dNAME-function"><tt>to-sql-name</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236WRITE_002dTABLE-function"><tt>write-table</tt></a> (function)
 </li></ul>
 </dd>
 </dl>
@@ -458,8 +449,8 @@ Previous: <a href="#Exported-definitions" accesskey="p" rel="prev">Exported defi
 </div>
 <span id="Functions"></span><h4 class="subsection">4.1.1 Functions</h4>
 <dl>
-<dt id="index-read_002dsqlite">Function: <strong>read-sqlite</strong> <em>DB TABLE</em></dt>
-<dd><span id="go-to-the-SQLDF_2236_2236READ_002dSQLITE-function"></span><span id="index-Function_002c-read_002dsqlite"></span>
+<dt id="index-read_002dtable">Function: <strong>read-table</strong> <em>DB TABLE</em></dt>
+<dd><span id="go-to-the-SQLDF_2236_2236READ_002dTABLE-function"></span><span id="index-Function_002c-read_002dtable"></span>
 <p>Read TABLE and return a data frame with the contents. Keys are interned in a package with the same name as TABLE.
 </p><dl compact="compact">
 <dt><strong>Package</strong></dt>
@@ -485,8 +476,8 @@ The data frame is identified by the word following FROM (case insensitive) in th
 </dl>
 </dd></dl>
 <dl>
-<dt id="index-write_002dsqlite">Function: <strong>write-sqlite</strong> <em>DB TABLE DF</em></dt>
-<dd><span id="go-to-the-SQLDF_2236_2236WRITE_002dSQLITE-function"></span><span id="index-Function_002c-write_002dsqlite"></span>
+<dt id="index-write_002dtable">Function: <strong>write-table</strong> <em>DB TABLE DF</em></dt>
+<dd><span id="go-to-the-SQLDF_2236_2236WRITE_002dTABLE-function"></span><span id="index-Function_002c-write_002dtable"></span>
 <p>Write data-frame DF to TABLE on connection DB. :na symbols are converted to &quot;NA&quot; strings in the database.
 </p><dl compact="compact">
 <dt><strong>Package</strong></dt>
@@ -601,19 +592,6 @@ hyphens.
 </dl>
 </dd></dl>
 <dl>
-<dt id="index-read_002dtable">Function: <strong>read-table</strong> <em>DB TABLE</em></dt>
-<dd><span id="go-to-the-SQLDF_2236_2236READ_002dTABLE-function"></span><span id="index-Function_002c-read_002dtable"></span>
-<p>Read TABLE and return a data frame with the contents. Keys are interned in a package with the same name as TABLE.
-</p><dl compact="compact">
-<dt><strong>Package</strong></dt>
-<dd><p><a href="#go-to-the-SQLDF-package"><tt>sqldf</tt></a>
-</p></dd>
-<dt><strong>Source</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002fsqldf_2024lisp-file"><tt>sqldf.lisp</tt></a> (file)
-</p></dd>
-</dl>
-</dd></dl>
-<dl>
 <dt id="index-sqlite_002dcolumn_002dtype">Function: <strong>sqlite-column-type</strong> <em>SEQUENCE</em></dt>
 <dd><span id="go-to-the-SQLDF_2236_2236SQLITE_002dCOLUMN_002dTYPE-function"></span><span id="index-Function_002c-sqlite_002dcolumn_002dtype"></span>
 <p>Return a format string for the most general type found in sequence<br>
@@ -658,19 +636,6 @@ to be reserved words, but it is not recommended.
 </p></dd>
 <dt><strong>Source</strong></dt>
 <dd><p><a href="#go-to-the-sqldf_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
-</p></dd>
-</dl>
-</dd></dl>
-<dl>
-<dt id="index-write_002dtable">Function: <strong>write-table</strong> <em>DB TABLE DF</em></dt>
-<dd><span id="go-to-the-SQLDF_2236_2236WRITE_002dTABLE-function"></span><span id="index-Function_002c-write_002dtable"></span>
-<p>Write data-frame DF to TABLE on connection DB. :na symbols are converted to &quot;NA&quot; strings in the database.
-</p><dl compact="compact">
-<dt><strong>Package</strong></dt>
-<dd><p><a href="#go-to-the-SQLDF-package"><tt>sqldf</tt></a>
-</p></dd>
-<dt><strong>Source</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002fsqldf_2024lisp-file"><tt>sqldf.lisp</tt></a> (file)
 </p></dd>
 </dl>
 </dd></dl>
@@ -775,18 +740,15 @@ Next: <a href="#Variable-index" accesskey="n" rel="next">Variable index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-Function_002c-create_002ddf_002dtable"><code><span class="roman">Function, </span>create-df-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Function_002c-execute_002dto_002dcolumn"><code><span class="roman">Function, </span>execute-to-column</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Function_002c-from_002dsql_002dname"><code><span class="roman">Function, </span>from-sql-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Function_002c-read_002dsqlite"><code><span class="roman">Function, </span>read-sqlite</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Function_002c-read_002dtable"><code><span class="roman">Function, </span>read-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-read_002dtable"><code><span class="roman">Function, </span>read-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Function_002c-sqldf"><code><span class="roman">Function, </span>sqldf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Function_002c-sqlite_002dcolumn_002dtype"><code><span class="roman">Function, </span>sqlite-column-type</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Function_002c-statement_002dcolumn_002dtype"><code><span class="roman">Function, </span>statement-column-type</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Function_002c-to_002dsql_002dname"><code><span class="roman">Function, </span>to-sql-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Function_002c-write_002dsqlite"><code><span class="roman">Function, </span>write-sqlite</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Function_002c-write_002dtable"><code><span class="roman">Function, </span>write-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-write_002dtable"><code><span class="roman">Function, </span>write-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Function-index_fn_letter-R">R</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-read_002dsqlite"><code>read-sqlite</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-read_002dtable"><code>read-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-read_002dtable"><code>read-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Function-index_fn_letter-S">S</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sqldf"><code>sqldf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
@@ -797,8 +759,7 @@ Next: <a href="#Variable-index" accesskey="n" rel="next">Variable index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-to_002dsql_002dname"><code>to-sql-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Function-index_fn_letter-W">W</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-write_002dsqlite"><code>write-sqlite</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-write_002dtable"><code>write-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-write_002dtable"><code>write-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Function-index_fn_letter-C"><b>C</b></a>
