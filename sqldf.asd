@@ -2,13 +2,17 @@
 ;;; Copyright (c) 2021 by Symbolics Pte Ltd. All rights reserved.
 
 (asdf:defsystem #:sqldf
-  :description "SQL for Data Frames"
-  :long-description "SQLDF is a library for querying data frames using SQL, optimised for convenience over memory consumption. It uses an in-memory data base for transparent queries."
+  :version "1.0.0"
   :license  :MS-PL
-  :version     (:read-file-form "version.sexp")
   :author  "Steve Nunez <steve@symbolics.tech>"
-  :source-control (:git "git://github.com/Lisp-Stat/sqldf")
+  :long-name "SQL queries for Data Frames"
+  :description "A wrapper for SQLite allowing querying of  Data Frames"
+  :long-description  #.(uiop:read-file-string
+			(uiop:subpathname *load-pathname* "description.text"))
   :homepage "http://lisp-stat.dev/docs/reference/sqldf/"
+  :source-control (:git "git://github.com/Lisp-Stat/sqldf")
+  :bug-tracker "https://github.com/Lisp-Stat/sqldf/issues"
+
   :serial t
   :depends-on (#:sqlite #:data-frame #:select)
   :in-order-to ((test-op (test-op "sqldf/tests")))

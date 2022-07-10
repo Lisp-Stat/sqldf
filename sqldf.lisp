@@ -1,11 +1,11 @@
 ;;; -*- Mode: LISP; Base: 10; Syntax: Ansi-Common-Lisp; Package: SQLDF -*-
-;;; Copyright (c) 2021 by Symbolics Pte. Ltd. All rights reserved.
+;;; Copyright (c) 2021-2022 by Symbolics Pte. Ltd. All rights reserved.
 (in-package #:sqldf)
 
 ;; TODO: handle packages for the keys too
 (defun sqldf (sql)
   "Execute SQL (a string) on a data frame and return a new data frame with the results.
-The data frame is identified by the word following FROM (case insensitive) in the SQL string. An in-memory SQLite database is creaetd, the contents of the data frame loaded, the query performed and a new DATA-FRAME returned with the results and the database deleted. In most cases, using this library is faster, from a developers time perspective, than writing the code to perform the same query.  SQLDF has been tested with data frames of 350K rows with no slow-down noted. The R documentation for their version of SQLDF suggests that it could be faster than Lisp native queries. Note that the SQL query must use SQL style names for columns and not the Lisp versions, e.g. flight-time becomes flight_time."
+The data frame is identified by the word following FROM (case insensitive) in the SQL string.  An in-memory SQLite database is creaetd, the contents of the data frame loaded, the query performed and a new DATA-FRAME returned with the results and the database deleted.  In most cases, using this library is faster, from a developers time perspective, than writing the code to perform the same query.  SQLDF has been tested with data frames of 350K rows with no slow-down noted.  The R documentation for their version of SQLDF suggests that it could be faster than Lisp native queries.  Note that the SQL query must use SQL style names for columns and not the Lisp versions, e.g. flight-time becomes flight_time."
   (let* ((db    (sqlite:connect ":memory:"))
 	 (words (uiop:split-string sql))
 	 (table (nth (1+ (position "from" words :test #'string=)) words))
@@ -86,7 +86,7 @@ The data frame is identified by the word following FROM (case insensitive) in th
 ;;;
 
 (defun create-df-table (db table df)
-  "Create a database table of NAME in DB according to the schema of DF. This function is to create a table for DF prior to loading.  Lisp style symbol names are converted to SQL compatible names."
+  "Create a database table of NAME in DB according to the schema of DF.  This function is to create a table for DF prior to loading.  Lisp style symbol names are converted to SQL compatible names."
   (sqlite:execute-non-query db
 			    (let (columns)
 			      (map nil

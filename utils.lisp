@@ -1,5 +1,5 @@
 ;;; -*- Mode: LISP; Base: 10; Syntax: Ansi-Common-Lisp; Package: SQLDF -*-
-;;; Copyright (c) 2021 by Symbolics Pte. Ltd. All rights reserved.
+;;; Copyright (c) 2021-2022 by Symbolics Pte. Ltd. All rights reserved.
 (in-package #:sqldf)
 
 (defun execute-to-column (db sql &rest parameters)
@@ -93,9 +93,9 @@ hyphens."
 Use this for sequences of type T to determine how to declare the column to SQLite."
   (when (bit-vector-p sequence) (return-from sqlite-column-type "INTEGER"))
   (case (df:column-type sequence)
-    (single-float "REAL")
-    (double-float "REAL")
-    (integer "INTEGER")
-    (bit "INTEGER")
-    (symbol "TEXT")
+    (:single-float "REAL")
+    (:double-float "REAL")
+    (:integer "INTEGER")
+    (:bit "INTEGER")
+    (:symbol "TEXT")
     (t "TEXT")))
