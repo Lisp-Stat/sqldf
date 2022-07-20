@@ -17,7 +17,7 @@
     (:blob "BLOB")
     (:null nil)))
 
-;;; to-sql-name and from-sql-name came from postmodern
+;;; to-sql-name and from-sql-name came from postmodern; blame them for warnings and notes
 (defparameter *sqlite-reserved-words* nil)
 (defparameter *downcase-symbols* nil)
 (defparameter *ESCAPE-SQL-NAMES-P* nil)
@@ -99,3 +99,10 @@ Use this for sequences of type T to determine how to declare the column to SQLit
     (:bit "INTEGER")
     (:symbol "TEXT")
     (t "TEXT")))
+
+#| Experiment in using POMO's S-SQL
+(defun strip-pg-parens (s-sql)
+  "Strip the leading and trailing '(' and ')' characters from the output of s-sql:sql.
+PostgreSQL doesn't care about these, but SQLite does."
+  (subseq s-sql 1 (1- (length s-sql))))
+|#

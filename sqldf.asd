@@ -1,5 +1,5 @@
 ;;; -*- Mode: LISP; Base: 10; Syntax: ANSI-Common-Lisp; Package: CL-USER -*-
-;;; Copyright (c) 2021 by Symbolics Pte Ltd. All rights reserved.
+;;; Copyright (c) 2021-2022 by Symbolics Pte Ltd. All rights reserved.
 
 (asdf:defsystem #:sqldf
   :version "1.0.0"
@@ -9,7 +9,7 @@
   :description "A wrapper for SQLite allowing querying of  Data Frames"
   :long-description  #.(uiop:read-file-string
 			(uiop:subpathname *load-pathname* "description.text"))
-  :homepage "http://lisp-stat.dev/docs/reference/sqldf/"
+  :homepage "http://lisp-stat.dev/docs/manuals/sqldf"
   :source-control (:git "git://github.com/Lisp-Stat/sqldf")
   :bug-tracker "https://github.com/Lisp-Stat/sqldf/issues"
 

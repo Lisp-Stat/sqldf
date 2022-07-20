@@ -1,0 +1,1 @@
+SQLDF is a library for querying data frames using SQL, optimised for convenience over memory consumption. It uses an in-memory data base for transparent queries.

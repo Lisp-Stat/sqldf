@@ -1,26 +1,43 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>The SQLDF Reference Manual</title>
+<!-- Copyright (C) 2019-2022 Steve Nunez
 
-<meta name="description" content="The SQLDF Reference Manual, version 1.1.">
-<meta name="keywords" content="The SQLDF Reference Manual">
+Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided also that the
+section entitled "Copying" is included exactly as in the original.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be translated as well. -->
+<title>The SQL Data Frames Reference Manual</title>
+
+<meta name="description" content="The SQL Data Frames Reference Manual, version 1.0.0.">
+<meta name="keywords" content="The SQL Data Frames Reference Manual">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link href="#Top" rel="start" title="Top">
 <link href="#Indexes" rel="index" title="Indexes">
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="dir.html#Top" rel="up" title="(dir)">
+<link href="#Copying" rel="next" title="Copying">
+<link href="dir.html#Top" rel="prev" title="(dir)">
 <style type="text/css">
 <!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
 kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
@@ -29,6 +46,7 @@ pre.menu-preformatted {font-family: serif}
 span.nolinebreak {white-space: nowrap}
 span.roman {font-family: initial; font-weight: normal}
 span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -37,7 +55,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">The SQLDF Reference Manual</h1>
+<h1 class="settitle" align="center">The SQL Data Frames Reference Manual</h1>
 
 
 
@@ -83,13 +101,37 @@ ul.no-bullet {list-style: none}
 
 
 
+<div class="top" id="Top">
+<span id="The-SQL-Data-Frames-Reference-Manual"></span><h1 class="top">The SQL Data Frames Reference Manual</h1>
+<p>This is the SQL Data Frames Reference Manual, version 1.0.0,
+generated automatically by Declt version 4.0b2.
+</p>
 
-<span id="SEC_Contents"></span>
+<blockquote>
+<p>Copyright &copy; 2019-2022 Steve Nunez
+</p>
+<p>Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+</p>
+<p>Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided also that the
+section entitled &ldquo;Copying&rdquo; is included exactly as in the original.
+</p>
+<p>Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be translated as well.
+</p></blockquote>
+
+
+
+<div class="Contents_element" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">
 
 <ul class="no-bullet">
+  <li><a id="toc-Copying-1" href="#Copying">Copying</a></li>
   <li><a id="toc-Systems-1" href="#Systems">1 Systems</a>
   <ul class="no-bullet">
     <li><a id="toc-sqldf" href="#The-sqldf-system">1.1 <tt>sqldf</tt></a></li>
@@ -98,7 +140,7 @@ ul.no-bullet {list-style: none}
   <ul class="no-bullet">
     <li><a id="toc-Lisp" href="#Lisp-files">2.1 Lisp</a>
     <ul class="no-bullet">
-      <li><a id="toc-sqldf_002easd" href="#The-sqldf_2024asd-file">2.1.1 <tt>sqldf.asd</tt></a></li>
+      <li><a id="toc-sqldf_002fsqldf_002easd" href="#The-sqldf_002fsqldf_2024asd-file">2.1.1 <tt>sqldf/sqldf.asd</tt></a></li>
       <li><a id="toc-sqldf_002fpkgdcl_002elisp" href="#The-sqldf_002fpkgdcl_2024lisp-file">2.1.2 <tt>sqldf/pkgdcl.lisp</tt></a></li>
       <li><a id="toc-sqldf_002futils_002elisp" href="#The-sqldf_002futils_2024lisp-file">2.1.3 <tt>sqldf/utils.lisp</tt></a></li>
       <li><a id="toc-sqldf_002fsqldf_002elisp" href="#The-sqldf_002fsqldf_2024lisp-file">2.1.4 <tt>sqldf/sqldf.lisp</tt></a></li>
@@ -110,113 +152,90 @@ ul.no-bullet {list-style: none}
   </ul></li>
   <li><a id="toc-Definitions-1" href="#Definitions">4 Definitions</a>
   <ul class="no-bullet">
-    <li><a id="toc-Exported-definitions-1" href="#Exported-definitions">4.1 Exported definitions</a>
+    <li><a id="toc-Public-Interface-1" href="#Public-Interface">4.1 Public Interface</a>
     <ul class="no-bullet">
-      <li><a id="toc-Functions" href="#Exported-functions">4.1.1 Functions</a></li>
+      <li><a id="toc-Ordinary-functions" href="#Public-ordinary-functions">4.1.1 Ordinary functions</a></li>
     </ul></li>
-    <li><a id="toc-Internal-definitions-1" href="#Internal-definitions">4.2 Internal definitions</a>
+    <li><a id="toc-Internals-1" href="#Internals">4.2 Internals</a>
     <ul class="no-bullet">
-      <li><a id="toc-Special-variables" href="#Internal-special-variables">4.2.1 Special variables</a></li>
-      <li><a id="toc-Functions-1" href="#Internal-functions">4.2.2 Functions</a></li>
+      <li><a id="toc-Special-variables" href="#Private-special-variables">4.2.1 Special variables</a></li>
+      <li><a id="toc-Ordinary-functions-1" href="#Private-ordinary-functions">4.2.2 Ordinary functions</a></li>
     </ul></li>
   </ul></li>
   <li><a id="toc-Indexes-1" href="#Indexes">Appendix A Indexes</a>
   <ul class="no-bullet">
     <li><a id="toc-Concepts" href="#Concept-index" rel="index">A.1 Concepts</a></li>
-    <li><a id="toc-Functions-2" href="#Function-index" rel="index">A.2 Functions</a></li>
+    <li><a id="toc-Functions" href="#Function-index" rel="index">A.2 Functions</a></li>
     <li><a id="toc-Variables" href="#Variable-index" rel="index">A.3 Variables</a></li>
     <li><a id="toc-Data-types" href="#Data-type-index" rel="index">A.4 Data types</a></li>
   </ul></li>
 </ul>
 </div>
-
-
-
-
-<span id="Top"></span><div class="header">
-<p>
-Next: <a href="#Systems" accesskey="n" rel="next">Systems</a>, Previous: <a href="dir.html#Top" accesskey="p" rel="prev">(dir)</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="The-SQLDF-Reference-Manual"></span><h1 class="top">The SQLDF Reference Manual</h1>
-<p>This is the SQLDF Reference Manual, version 1.1.
-</p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Systems" accesskey="1">Systems</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The systems documentation
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Files" accesskey="2">Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The files documentation
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Packages" accesskey="3">Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The packages documentation
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Definitions" accesskey="4">Definitions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The symbols documentation
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Indexes" accesskey="5">Indexes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Concepts, functions, variables and data types
-</td></tr>
-</table>
+<hr>
+<div class="unnumbered" id="Copying">
+<span id="Copying-1"></span><h2 class="unnumbered">Copying</h2>
+<blockquote>
+<p>This program is distributed under the terms of the Microsoft Public
+License.
+</p></blockquote>
 
 
 
 <hr>
-<span id="Systems"></span><div class="header">
-<p>
-Next: <a href="#Files" accesskey="n" rel="next">Files</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
+<div class="chapter" id="Systems">
 <span id="Systems-1"></span><h2 class="chapter">1 Systems</h2>
 <p>The main system appears first, followed by any subsystem dependency.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#The-sqldf-system" accesskey="1">The sqldf system</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 
 <hr>
-<span id="The-sqldf-system"></span><div class="header">
-<p>
-Previous: <a href="#Systems" accesskey="p" rel="prev">Systems</a>, Up: <a href="#Systems" accesskey="u" rel="up">Systems</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
-</div>
+<div class="section" id="The-sqldf-system">
 <span id="sqldf"></span><h3 class="section">1.1 <tt>sqldf</tt></h3>
-<span id="go-to-the-sqldf-system"></span><span id="index-sqldf-1"></span>
+<span id="g_t_27681_2769"></span><span id="index-sqldf-1"></span>
 <span id="index-System_002c-sqldf"></span>
-<dl compact="compact">
-<dt><strong>Author</strong></dt>
+<p>A wrapper for SQLite allowing querying of  Data Frames
+</p><dl compact="compact">
+<dt><span><strong>Long Name</strong></span></dt>
+<dd><p>SQL queries for Data Frames
+</p></dd>
+<dt><span><strong>Author</strong></span></dt>
 <dd><p>Steve Nunez &lt;<a href="mailto:steve@symbolics.tech">steve@symbolics.tech</a>&gt;
 </p></dd>
-<dt><strong>Home Page</strong></dt>
-<dd><p><a href="http://lisp-stat.dev/docs/reference/sqldf/">http://lisp-stat.dev/docs/reference/sqldf/</a>
+<dt><span><strong>Home Page</strong></span></dt>
+<dd><p><a href="http://lisp-stat.dev/docs/manuals/sqldf">http://lisp-stat.dev/docs/manuals/sqldf</a>
 </p></dd>
-<dt><strong>Source Control</strong></dt>
-<dd><p><tt>(:git &quot;git://github.com/lisp-stat/sqldf&quot;)</tt>
+<dt><span><strong>Source Control</strong></span></dt>
+<dd><p><tt>(GIT git://github.com/Lisp-Stat/sqldf)</tt>
 </p></dd>
-<dt><strong>License</strong></dt>
+<dt><span><strong>Bug Tracker</strong></span></dt>
+<dd><p><a href="https://github.com/Lisp-Stat/sqldf/issues">https://github.com/Lisp-Stat/sqldf/issues</a>
+</p></dd>
+<dt><span><strong>License</strong></span></dt>
 <dd><p>MS-PL
 </p></dd>
-<dt><strong>Description</strong></dt>
-<dd><p>SQL for Data Frames
-</p></dd>
-<dt><strong>Long Description</strong></dt>
+<dt><span><strong>Long Description</strong></span></dt>
 <dd><p>SQLDF is a library for querying data frames using SQL, optimised for convenience over memory consumption. It uses an in-memory data base for transparent queries.
 </p></dd>
-<dt><strong>Version</strong></dt>
-<dd><p>1.1
+<dt><span><strong>Version</strong></span></dt>
+<dd><p>1.0.0
 </p></dd>
-<dt><strong>Dependencies</strong></dt>
+<dt><span><strong>Dependencies</strong></span></dt>
 <dd><ul>
-<li> <tt>sqlite</tt>
-</li><li> <tt>data-frame</tt>
-</li><li> <tt>select</tt>
+<li> <tt>sqlite</tt> (system).
+</li><li> <tt>data-frame</tt> (system).
+</li><li> <tt>select</tt> (system).
 </li></ul>
 </dd>
-<dt><strong>Source</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_2024asd-file"><tt>sqldf.asd</tt></a> (file)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27682_2769"><tt>sqldf.asd</tt></a>.
 </p></dd>
-<dt><strong>Directory</strong></dt>
-<dd><p><a href="file://s:/src/sqldf/"><tt>s:/src/sqldf/</tt></a>
-</p></dd>
-<dt><strong>Components</strong></dt>
+<dt><span><strong>Child Components</strong></span></dt>
 <dd><ul>
-<li> <a href="#go-to-the-sqldf_002fpkgdcl_2024lisp-file"><tt>pkgdcl.lisp</tt></a> (file)
-</li><li> <a href="#go-to-the-sqldf_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
-</li><li> <a href="#go-to-the-sqldf_002fsqldf_2024lisp-file"><tt>sqldf.lisp</tt></a> (file)
+<li> <a href="#g_t_27683_2769"><tt>pkgdcl.lisp</tt></a> (file).
+</li><li> <a href="#g_t_27684_2769"><tt>utils.lisp</tt></a> (file).
+</li><li> <a href="#g_t_27685_2769"><tt>sqldf.lisp</tt></a> (file).
 </li></ul>
 </dd>
 </dl>
@@ -224,190 +243,155 @@ Previous: <a href="#Systems" accesskey="p" rel="prev">Systems</a>, Up: <a href="
 
 
 <hr>
-<span id="Files"></span><div class="header">
-<p>
-Next: <a href="#Packages" accesskey="n" rel="next">Packages</a>, Previous: <a href="#Systems" accesskey="p" rel="prev">Systems</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
+</div>
+<div class="chapter" id="Files">
 <span id="Files-1"></span><h2 class="chapter">2 Files</h2>
 <p>Files are sorted by type and then listed depth-first from the systems
 components trees.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Lisp-files" accesskey="1">Lisp files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 
 <hr>
-<span id="Lisp-files"></span><div class="header">
-<p>
-Previous: <a href="#Files" accesskey="p" rel="prev">Files</a>, Up: <a href="#Files" accesskey="u" rel="up">Files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
-</div>
+<div class="section" id="Lisp-files">
 <span id="Lisp"></span><h3 class="section">2.1 Lisp</h3>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#The-sqldf_2024asd-file" accesskey="1">The sqldf.asd file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#The-sqldf_002fpkgdcl_2024lisp-file" accesskey="2">The sqldf/pkgdcl.lisp file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#The-sqldf_002futils_2024lisp-file" accesskey="3">The sqldf/utils.lisp file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#The-sqldf_002fsqldf_2024lisp-file" accesskey="4">The sqldf/sqldf.lisp file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
-<span id="The-sqldf_2024asd-file"></span><div class="header">
-<p>
-Next: <a href="#The-sqldf_002fpkgdcl_2024lisp-file" accesskey="n" rel="next">The sqldf/pkgdcl․lisp file</a>, Previous: <a href="#Lisp-files" accesskey="p" rel="prev">Lisp files</a>, Up: <a href="#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
-</div>
-<span id="sqldf_002easd"></span><h4 class="subsection">2.1.1 <tt>sqldf.asd</tt></h4>
-<span id="go-to-the-sqldf_2024asd-file"></span><span id="index-sqldf_002easd"></span>
-<span id="index-Lisp-File_002c-sqldf_002easd"></span>
-<span id="index-File_002c-Lisp_002c-sqldf_002easd"></span>
+<div class="subsection" id="The-sqldf_002fsqldf_2024asd-file">
+<span id="sqldf_002fsqldf_002easd"></span><h4 class="subsection">2.1.1 <tt>sqldf/sqldf.asd</tt></h4>
+<span id="g_t_27682_2769"></span><span id="index-sqldf_002easd"></span>
+<span id="index-File_002c-sqldf_002easd"></span>
 <dl compact="compact">
-<dt><strong>Location</strong></dt>
-<dd><p><a href="file://s:/src/sqldf/sqldf.asd"><tt>sqldf.asd</tt></a>
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27682_2769"><tt>sqldf.asd</tt></a>.
 </p></dd>
-<dt><strong>Systems</strong></dt>
-<dd><p><a href="#go-to-the-sqldf-system"><tt>sqldf</tt></a> (system)
+<dt><span><strong>Parent Component</strong></span></dt>
+<dd><p><a href="#g_t_27681_2769"><tt>sqldf</tt></a> (system).
+</p></dd>
+<dt><span><strong>ASDF Systems</strong></span></dt>
+<dd><p><a href="#g_t_27681_2769"><tt>sqldf</tt></a>.
 </p></dd>
 </dl>
 
 <hr>
-<span id="The-sqldf_002fpkgdcl_2024lisp-file"></span><div class="header">
-<p>
-Next: <a href="#The-sqldf_002futils_2024lisp-file" accesskey="n" rel="next">The sqldf/utils․lisp file</a>, Previous: <a href="#The-sqldf_2024asd-file" accesskey="p" rel="prev">The sqldf․asd file</a>, Up: <a href="#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
+<div class="subsection" id="The-sqldf_002fpkgdcl_2024lisp-file">
 <span id="sqldf_002fpkgdcl_002elisp"></span><h4 class="subsection">2.1.2 <tt>sqldf/pkgdcl.lisp</tt></h4>
-<span id="go-to-the-sqldf_002fpkgdcl_2024lisp-file"></span><span id="index-sqldf_002fpkgdcl_002elisp"></span>
-<span id="index-Lisp-File_002c-sqldf_002fpkgdcl_002elisp"></span>
-<span id="index-File_002c-Lisp_002c-sqldf_002fpkgdcl_002elisp"></span>
+<span id="g_t_27683_2769"></span><span id="index-pkgdcl_002elisp"></span>
+<span id="index-File_002c-pkgdcl_002elisp"></span>
 <dl compact="compact">
-<dt><strong>Parent</strong></dt>
-<dd><p><a href="#go-to-the-sqldf-system"><tt>sqldf</tt></a> (system)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27682_2769"><tt>sqldf.asd</tt></a>.
 </p></dd>
-<dt><strong>Location</strong></dt>
-<dd><p><a href="file://s:/src/sqldf/pkgdcl.lisp"><tt>pkgdcl.lisp</tt></a>
+<dt><span><strong>Parent Component</strong></span></dt>
+<dd><p><a href="#g_t_27681_2769"><tt>sqldf</tt></a> (system).
 </p></dd>
-<dt><strong>Packages</strong></dt>
-<dd><p><a href="#go-to-the-SQLDF-package"><tt>sqldf</tt></a>
+<dt><span><strong>Packages</strong></span></dt>
+<dd><p><a href="#g_t_27686_2769"><tt>sqldf</tt></a>.
 </p></dd>
 </dl>
 
 <hr>
-<span id="The-sqldf_002futils_2024lisp-file"></span><div class="header">
-<p>
-Next: <a href="#The-sqldf_002fsqldf_2024lisp-file" accesskey="n" rel="next">The sqldf/sqldf․lisp file</a>, Previous: <a href="#The-sqldf_002fpkgdcl_2024lisp-file" accesskey="p" rel="prev">The sqldf/pkgdcl․lisp file</a>, Up: <a href="#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
+<div class="subsection" id="The-sqldf_002futils_2024lisp-file">
 <span id="sqldf_002futils_002elisp"></span><h4 class="subsection">2.1.3 <tt>sqldf/utils.lisp</tt></h4>
-<span id="go-to-the-sqldf_002futils_2024lisp-file"></span><span id="index-sqldf_002futils_002elisp"></span>
-<span id="index-Lisp-File_002c-sqldf_002futils_002elisp"></span>
-<span id="index-File_002c-Lisp_002c-sqldf_002futils_002elisp"></span>
+<span id="g_t_27684_2769"></span><span id="index-utils_002elisp"></span>
+<span id="index-File_002c-utils_002elisp"></span>
 <dl compact="compact">
-<dt><strong>Dependency</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002fpkgdcl_2024lisp-file"><tt>pkgdcl.lisp</tt></a> (file)
+<dt><span><strong>Dependency</strong></span></dt>
+<dd><p><a href="#g_t_27683_2769"><tt>pkgdcl.lisp</tt></a> (file).
 </p></dd>
-<dt><strong>Parent</strong></dt>
-<dd><p><a href="#go-to-the-sqldf-system"><tt>sqldf</tt></a> (system)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27682_2769"><tt>sqldf.asd</tt></a>.
 </p></dd>
-<dt><strong>Location</strong></dt>
-<dd><p><a href="file://s:/src/sqldf/utils.lisp"><tt>utils.lisp</tt></a>
+<dt><span><strong>Parent Component</strong></span></dt>
+<dd><p><a href="#g_t_27681_2769"><tt>sqldf</tt></a> (system).
 </p></dd>
-<dt><strong>Internal Definitions</strong></dt>
+<dt><span><strong>Internals</strong></span></dt>
 <dd><ul>
-<li> <a href="#go-to-the-SQLDF_2236_2236_002aDOWNCASE_002dSYMBOLS_002a-special-variable"><tt>*downcase-symbols*</tt></a> (special variable)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236_002aESCAPE_002dSQL_002dNAMES_002dP_002a-special-variable"><tt>*escape-sql-names-p*</tt></a> (special variable)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236_002aSQLITE_002dRESERVED_002dWORDS_002a-special-variable"><tt>*sqlite-reserved-words*</tt></a> (special variable)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236EXECUTE_002dTO_002dCOLUMN-function"><tt>execute-to-column</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236FROM_002dSQL_002dNAME-function"><tt>from-sql-name</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236SQLITE_002dCOLUMN_002dTYPE-function"><tt>sqlite-column-type</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236STATEMENT_002dCOLUMN_002dTYPE-function"><tt>statement-column-type</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236TO_002dSQL_002dNAME-function"><tt>to-sql-name</tt></a> (function)
+<li> <a href="#g_t_276815_2769"><tt>*downcase-symbols*</tt></a> (special variable).
+</li><li> <a href="#g_t_276818_2769"><tt>*escape-sql-names-p*</tt></a> (special variable).
+</li><li> <a href="#g_t_276817_2769"><tt>*sqlite-reserved-words*</tt></a> (special variable).
+</li><li> <a href="#g_t_276813_2769"><tt>execute-to-column</tt></a> (function).
+</li><li> <a href="#g_t_276812_2769"><tt>from-sql-name</tt></a> (function).
+</li><li> <a href="#g_t_276816_2769"><tt>sqlite-column-type</tt></a> (function).
+</li><li> <a href="#g_t_276810_2769"><tt>statement-column-type</tt></a> (function).
+</li><li> <a href="#g_t_276811_2769"><tt>to-sql-name</tt></a> (function).
 </li></ul>
 </dd>
 </dl>
 
 <hr>
-<span id="The-sqldf_002fsqldf_2024lisp-file"></span><div class="header">
-<p>
-Previous: <a href="#The-sqldf_002futils_2024lisp-file" accesskey="p" rel="prev">The sqldf/utils․lisp file</a>, Up: <a href="#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
+<div class="subsection" id="The-sqldf_002fsqldf_2024lisp-file">
 <span id="sqldf_002fsqldf_002elisp"></span><h4 class="subsection">2.1.4 <tt>sqldf/sqldf.lisp</tt></h4>
-<span id="go-to-the-sqldf_002fsqldf_2024lisp-file"></span><span id="index-sqldf_002fsqldf_002elisp"></span>
-<span id="index-Lisp-File_002c-sqldf_002fsqldf_002elisp"></span>
-<span id="index-File_002c-Lisp_002c-sqldf_002fsqldf_002elisp"></span>
+<span id="g_t_27685_2769"></span><span id="index-sqldf_002elisp"></span>
+<span id="index-File_002c-sqldf_002elisp"></span>
 <dl compact="compact">
-<dt><strong>Dependency</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
+<dt><span><strong>Dependency</strong></span></dt>
+<dd><p><a href="#g_t_27684_2769"><tt>utils.lisp</tt></a> (file).
 </p></dd>
-<dt><strong>Parent</strong></dt>
-<dd><p><a href="#go-to-the-sqldf-system"><tt>sqldf</tt></a> (system)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27682_2769"><tt>sqldf.asd</tt></a>.
 </p></dd>
-<dt><strong>Location</strong></dt>
-<dd><p><a href="file://s:/src/sqldf/sqldf.lisp"><tt>sqldf.lisp</tt></a>
+<dt><span><strong>Parent Component</strong></span></dt>
+<dd><p><a href="#g_t_27681_2769"><tt>sqldf</tt></a> (system).
 </p></dd>
-<dt><strong>Exported Definitions</strong></dt>
+<dt><span><strong>Public Interface</strong></span></dt>
 <dd><ul>
-<li> <a href="#go-to-the-SQLDF_2236_2236READ_002dTABLE-function"><tt>read-table</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236SQLDF-function"><tt>sqldf</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236WRITE_002dTABLE-function"><tt>write-table</tt></a> (function)
+<li> <a href="#g_t_27687_2769"><tt>read-table</tt></a> (function).
+</li><li> <a href="#g_t_27688_2769"><tt>sqldf</tt></a> (function).
+</li><li> <a href="#g_t_27689_2769"><tt>write-table</tt></a> (function).
 </li></ul>
 </dd>
-<dt><strong>Internal Definitions</strong></dt>
-<dd><p><a href="#go-to-the-SQLDF_2236_2236CREATE_002dDF_002dTABLE-function"><tt>create-df-table</tt></a> (function)
+<dt><span><strong>Internals</strong></span></dt>
+<dd><p><a href="#g_t_276814_2769"><tt>create-df-table</tt></a> (function).
 </p></dd>
 </dl>
 
 
 
 <hr>
-<span id="Packages"></span><div class="header">
-<p>
-Next: <a href="#Definitions" accesskey="n" rel="next">Definitions</a>, Previous: <a href="#Files" accesskey="p" rel="prev">Files</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
+</div>
+</div>
+<div class="chapter" id="Packages">
 <span id="Packages-1"></span><h2 class="chapter">3 Packages</h2>
 <p>Packages are listed by definition order.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#The-sqldf-package" accesskey="1">The sqldf package</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 
 <hr>
-<span id="The-sqldf-package"></span><div class="header">
-<p>
-Previous: <a href="#Packages" accesskey="p" rel="prev">Packages</a>, Up: <a href="#Packages" accesskey="u" rel="up">Packages</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
-</div>
+<div class="section" id="The-sqldf-package">
 <span id="sqldf-1"></span><h3 class="section">3.1 <tt>sqldf</tt></h3>
-<span id="go-to-the-SQLDF-package"></span><span id="index-sqldf-2"></span>
+<span id="g_t_27686_2769"></span><span id="index-sqldf-2"></span>
 <span id="index-Package_002c-sqldf"></span>
 <p>SQLDF is a facility for querying data frames with SQL
 </p><dl compact="compact">
-<dt><strong>Source</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002fpkgdcl_2024lisp-file"><tt>pkgdcl.lisp</tt></a> (file)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27683_2769"><tt>pkgdcl.lisp</tt></a>.
 </p></dd>
-<dt><strong>Use List</strong></dt>
-<dd><p><tt>common-lisp</tt>
+<dt><span><strong>Use List</strong></span></dt>
+<dd><p><tt>common-lisp</tt>.
 </p></dd>
-<dt><strong>Exported Definitions</strong></dt>
+<dt><span><strong>Public Interface</strong></span></dt>
 <dd><ul>
-<li> <a href="#go-to-the-SQLDF_2236_2236READ_002dTABLE-function"><tt>read-table</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236SQLDF-function"><tt>sqldf</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236WRITE_002dTABLE-function"><tt>write-table</tt></a> (function)
+<li> <a href="#g_t_27687_2769"><tt>read-table</tt></a> (function).
+</li><li> <a href="#g_t_27688_2769"><tt>sqldf</tt></a> (function).
+</li><li> <a href="#g_t_27689_2769"><tt>write-table</tt></a> (function).
 </li></ul>
 </dd>
-<dt><strong>Internal Definitions</strong></dt>
+<dt><span><strong>Internals</strong></span></dt>
 <dd><ul>
-<li> <a href="#go-to-the-SQLDF_2236_2236_002aDOWNCASE_002dSYMBOLS_002a-special-variable"><tt>*downcase-symbols*</tt></a> (special variable)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236_002aESCAPE_002dSQL_002dNAMES_002dP_002a-special-variable"><tt>*escape-sql-names-p*</tt></a> (special variable)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236_002aSQLITE_002dRESERVED_002dWORDS_002a-special-variable"><tt>*sqlite-reserved-words*</tt></a> (special variable)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236CREATE_002dDF_002dTABLE-function"><tt>create-df-table</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236EXECUTE_002dTO_002dCOLUMN-function"><tt>execute-to-column</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236FROM_002dSQL_002dNAME-function"><tt>from-sql-name</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236SQLITE_002dCOLUMN_002dTYPE-function"><tt>sqlite-column-type</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236STATEMENT_002dCOLUMN_002dTYPE-function"><tt>statement-column-type</tt></a> (function)
-</li><li> <a href="#go-to-the-SQLDF_2236_2236TO_002dSQL_002dNAME-function"><tt>to-sql-name</tt></a> (function)
+<li> <a href="#g_t_276815_2769"><tt>*downcase-symbols*</tt></a> (special variable).
+</li><li> <a href="#g_t_276818_2769"><tt>*escape-sql-names-p*</tt></a> (special variable).
+</li><li> <a href="#g_t_276817_2769"><tt>*sqlite-reserved-words*</tt></a> (special variable).
+</li><li> <a href="#g_t_276814_2769"><tt>create-df-table</tt></a> (function).
+</li><li> <a href="#g_t_276813_2769"><tt>execute-to-column</tt></a> (function).
+</li><li> <a href="#g_t_276812_2769"><tt>from-sql-name</tt></a> (function).
+</li><li> <a href="#g_t_276816_2769"><tt>sqlite-column-type</tt></a> (function).
+</li><li> <a href="#g_t_276810_2769"><tt>statement-column-type</tt></a> (function).
+</li><li> <a href="#g_t_276811_2769"><tt>to-sql-name</tt></a> (function).
 </li></ul>
 </dd>
 </dl>
@@ -415,212 +399,183 @@ Previous: <a href="#Packages" accesskey="p" rel="prev">Packages</a>, Up: <a href
 
 
 <hr>
-<span id="Definitions"></span><div class="header">
-<p>
-Next: <a href="#Indexes" accesskey="n" rel="next">Indexes</a>, Previous: <a href="#Packages" accesskey="p" rel="prev">Packages</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
+</div>
+<div class="chapter" id="Definitions">
 <span id="Definitions-1"></span><h2 class="chapter">4 Definitions</h2>
 <p>Definitions are sorted by export status, category, package, and then by
 lexicographic order.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Exported-definitions" accesskey="1">Exported definitions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Internal-definitions" accesskey="2">Internal definitions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 
 <hr>
-<span id="Exported-definitions"></span><div class="header">
-<p>
-Next: <a href="#Internal-definitions" accesskey="n" rel="next">Internal definitions</a>, Previous: <a href="#Definitions" accesskey="p" rel="prev">Definitions</a>, Up: <a href="#Definitions" accesskey="u" rel="up">Definitions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
-</div>
-<span id="Exported-definitions-1"></span><h3 class="section">4.1 Exported definitions</h3>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Exported-functions" accesskey="1">Exported functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
+<div class="section" id="Public-Interface">
+<span id="Public-Interface-1"></span><h3 class="section">4.1 Public Interface</h3>
 
 <hr>
-<span id="Exported-functions"></span><div class="header">
-<p>
-Previous: <a href="#Exported-definitions" accesskey="p" rel="prev">Exported definitions</a>, Up: <a href="#Exported-definitions" accesskey="u" rel="up">Exported definitions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
-</div>
-<span id="Functions"></span><h4 class="subsection">4.1.1 Functions</h4>
-<dl>
-<dt id="index-read_002dtable">Function: <strong>read-table</strong> <em>DB TABLE</em></dt>
-<dd><span id="go-to-the-SQLDF_2236_2236READ_002dTABLE-function"></span><span id="index-Function_002c-read_002dtable"></span>
+<div class="subsection" id="Public-ordinary-functions">
+<span id="Ordinary-functions"></span><h4 class="subsection">4.1.1 Ordinary functions</h4>
+<dl class="def">
+<dt id="index-read_002dtable"><span class="category">Function: </span><span><strong>read-table</strong> <em>(db table)</em><a href='#index-read_002dtable' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="g_t_27687_2769"></span><span id="index-Function_002c-read_002dtable"></span>
 <p>Read TABLE and return a data frame with the contents. Keys are interned in a package with the same name as TABLE.
 </p><dl compact="compact">
-<dt><strong>Package</strong></dt>
-<dd><p><a href="#go-to-the-SQLDF-package"><tt>sqldf</tt></a>
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="#g_t_27686_2769"><tt>sqldf</tt></a>.
 </p></dd>
-<dt><strong>Source</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002fsqldf_2024lisp-file"><tt>sqldf.lisp</tt></a> (file)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27685_2769"><tt>sqldf.lisp</tt></a>.
 </p></dd>
 </dl>
 </dd></dl>
-<dl>
-<dt id="index-sqldf">Function: <strong>sqldf</strong> <em>SQL</em></dt>
-<dd><span id="go-to-the-SQLDF_2236_2236SQLDF-function"></span><span id="index-Function_002c-sqldf"></span>
+<dl class="def">
+<dt id="index-sqldf"><span class="category">Function: </span><span><strong>sqldf</strong> <em>(sql)</em><a href='#index-sqldf' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="g_t_27688_2769"></span><span id="index-Function_002c-sqldf"></span>
 <p>Execute SQL (a string) on a data frame and return a new data frame with the results.<br>
-The data frame is identified by the word following FROM (case insensitive) in the SQL string. An in-memory SQLite database is creaetd, the contents of the data frame loaded, the query performed and a new DATA-FRAME returned with the results and the database deleted. In most cases, using this library is faster, from a developers time perspective, than writing the code to perform the same query.  SQLDF has been tested with data frames of 350K rows with no slow-down noted. The R documentation for their version of SQLDF suggests that it could be faster than Lisp native queries. Note that the SQL query must use SQL style names for columns and not the Lisp versions, e.g. flight-time becomes flight_time.
+The data frame is identified by the word following FROM (case insensitive) in the SQL string.  An in-memory SQLite database is creaetd, the contents of the data frame loaded, the query performed and a new DATA-FRAME returned with the results and the database deleted.  In most cases, using this library is faster, from a developers time perspective, than writing the code to perform the same query.  SQLDF has been tested with data frames of 350K rows with no slow-down noted.  The R documentation for their version of SQLDF suggests that it could be faster than Lisp native queries.  Note that the SQL query must use SQL style names for columns and not the Lisp versions, e.g. flight-time becomes flight_time.
 </p><dl compact="compact">
-<dt><strong>Package</strong></dt>
-<dd><p><a href="#go-to-the-SQLDF-package"><tt>sqldf</tt></a>
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="#g_t_27686_2769"><tt>sqldf</tt></a>.
 </p></dd>
-<dt><strong>Source</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002fsqldf_2024lisp-file"><tt>sqldf.lisp</tt></a> (file)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27685_2769"><tt>sqldf.lisp</tt></a>.
 </p></dd>
 </dl>
 </dd></dl>
-<dl>
-<dt id="index-write_002dtable">Function: <strong>write-table</strong> <em>DB TABLE DF</em></dt>
-<dd><span id="go-to-the-SQLDF_2236_2236WRITE_002dTABLE-function"></span><span id="index-Function_002c-write_002dtable"></span>
+<dl class="def">
+<dt id="index-write_002dtable"><span class="category">Function: </span><span><strong>write-table</strong> <em>(db table df)</em><a href='#index-write_002dtable' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="g_t_27689_2769"></span><span id="index-Function_002c-write_002dtable"></span>
 <p>Write data-frame DF to TABLE on connection DB. :na symbols are converted to &quot;NA&quot; strings in the database.
 </p><dl compact="compact">
-<dt><strong>Package</strong></dt>
-<dd><p><a href="#go-to-the-SQLDF-package"><tt>sqldf</tt></a>
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="#g_t_27686_2769"><tt>sqldf</tt></a>.
 </p></dd>
-<dt><strong>Source</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002fsqldf_2024lisp-file"><tt>sqldf.lisp</tt></a> (file)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27685_2769"><tt>sqldf.lisp</tt></a>.
 </p></dd>
 </dl>
 </dd></dl>
 
 
 <hr>
-<span id="Internal-definitions"></span><div class="header">
-<p>
-Previous: <a href="#Exported-definitions" accesskey="p" rel="prev">Exported definitions</a>, Up: <a href="#Definitions" accesskey="u" rel="up">Definitions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Internal-definitions-1"></span><h3 class="section">4.2 Internal definitions</h3>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Internal-special-variables" accesskey="1">Internal special variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Internal-functions" accesskey="2">Internal functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
+</div>
+<div class="section" id="Internals">
+<span id="Internals-1"></span><h3 class="section">4.2 Internals</h3>
 
 <hr>
-<span id="Internal-special-variables"></span><div class="header">
-<p>
-Next: <a href="#Internal-functions" accesskey="n" rel="next">Internal functions</a>, Previous: <a href="#Internal-definitions" accesskey="p" rel="prev">Internal definitions</a>, Up: <a href="#Internal-definitions" accesskey="u" rel="up">Internal definitions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
-</div>
+<div class="subsection" id="Private-special-variables">
 <span id="Special-variables"></span><h4 class="subsection">4.2.1 Special variables</h4>
-<dl>
-<dt id="index-_002adowncase_002dsymbols_002a">Special Variable: <strong>*downcase-symbols*</strong></dt>
-<dd><span id="go-to-the-SQLDF_2236_2236_002aDOWNCASE_002dSYMBOLS_002a-special-variable"></span><span id="index-Special-Variable_002c-_002adowncase_002dsymbols_002a"></span>
+<dl class="def">
+<dt id="index-_002adowncase_002dsymbols_002a"><span class="category">Special Variable: </span><span><strong>*downcase-symbols*</strong><a href='#index-_002adowncase_002dsymbols_002a' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="g_t_276815_2769"></span><span id="index-Special-Variable_002c-_002adowncase_002dsymbols_002a"></span>
 <dl compact="compact">
-<dt><strong>Package</strong></dt>
-<dd><p><a href="#go-to-the-SQLDF-package"><tt>sqldf</tt></a>
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="#g_t_27686_2769"><tt>sqldf</tt></a>.
 </p></dd>
-<dt><strong>Source</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27684_2769"><tt>utils.lisp</tt></a>.
 </p></dd>
 </dl>
 </dd></dl>
-<dl>
-<dt id="index-_002aescape_002dsql_002dnames_002dp_002a">Special Variable: <strong>*escape-sql-names-p*</strong></dt>
-<dd><span id="go-to-the-SQLDF_2236_2236_002aESCAPE_002dSQL_002dNAMES_002dP_002a-special-variable"></span><span id="index-Special-Variable_002c-_002aescape_002dsql_002dnames_002dp_002a"></span>
+<dl class="def">
+<dt id="index-_002aescape_002dsql_002dnames_002dp_002a"><span class="category">Special Variable: </span><span><strong>*escape-sql-names-p*</strong><a href='#index-_002aescape_002dsql_002dnames_002dp_002a' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="g_t_276818_2769"></span><span id="index-Special-Variable_002c-_002aescape_002dsql_002dnames_002dp_002a"></span>
 <dl compact="compact">
-<dt><strong>Package</strong></dt>
-<dd><p><a href="#go-to-the-SQLDF-package"><tt>sqldf</tt></a>
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="#g_t_27686_2769"><tt>sqldf</tt></a>.
 </p></dd>
-<dt><strong>Source</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27684_2769"><tt>utils.lisp</tt></a>.
 </p></dd>
 </dl>
 </dd></dl>
-<dl>
-<dt id="index-_002asqlite_002dreserved_002dwords_002a">Special Variable: <strong>*sqlite-reserved-words*</strong></dt>
-<dd><span id="go-to-the-SQLDF_2236_2236_002aSQLITE_002dRESERVED_002dWORDS_002a-special-variable"></span><span id="index-Special-Variable_002c-_002asqlite_002dreserved_002dwords_002a"></span>
+<dl class="def">
+<dt id="index-_002asqlite_002dreserved_002dwords_002a"><span class="category">Special Variable: </span><span><strong>*sqlite-reserved-words*</strong><a href='#index-_002asqlite_002dreserved_002dwords_002a' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="g_t_276817_2769"></span><span id="index-Special-Variable_002c-_002asqlite_002dreserved_002dwords_002a"></span>
 <dl compact="compact">
-<dt><strong>Package</strong></dt>
-<dd><p><a href="#go-to-the-SQLDF-package"><tt>sqldf</tt></a>
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="#g_t_27686_2769"><tt>sqldf</tt></a>.
 </p></dd>
-<dt><strong>Source</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27684_2769"><tt>utils.lisp</tt></a>.
 </p></dd>
 </dl>
 </dd></dl>
 
 <hr>
-<span id="Internal-functions"></span><div class="header">
-<p>
-Previous: <a href="#Internal-special-variables" accesskey="p" rel="prev">Internal special variables</a>, Up: <a href="#Internal-definitions" accesskey="u" rel="up">Internal definitions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Functions-1"></span><h4 class="subsection">4.2.2 Functions</h4>
-<dl>
-<dt id="index-create_002ddf_002dtable">Function: <strong>create-df-table</strong> <em>DB TABLE DF</em></dt>
-<dd><span id="go-to-the-SQLDF_2236_2236CREATE_002dDF_002dTABLE-function"></span><span id="index-Function_002c-create_002ddf_002dtable"></span>
-<p>Create a database table of NAME in DB according to the schema of DF. This function is to create a table for DF prior to loading.  Lisp style symbol names are converted to SQL compatible names.
+<div class="subsection" id="Private-ordinary-functions">
+<span id="Ordinary-functions-1"></span><h4 class="subsection">4.2.2 Ordinary functions</h4>
+<dl class="def">
+<dt id="index-create_002ddf_002dtable"><span class="category">Function: </span><span><strong>create-df-table</strong> <em>(db table df)</em><a href='#index-create_002ddf_002dtable' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="g_t_276814_2769"></span><span id="index-Function_002c-create_002ddf_002dtable"></span>
+<p>Create a database table of NAME in DB according to the schema of DF.  This function is to create a table for DF prior to loading.  Lisp style symbol names are converted to SQL compatible names.
 </p><dl compact="compact">
-<dt><strong>Package</strong></dt>
-<dd><p><a href="#go-to-the-SQLDF-package"><tt>sqldf</tt></a>
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="#g_t_27686_2769"><tt>sqldf</tt></a>.
 </p></dd>
-<dt><strong>Source</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002fsqldf_2024lisp-file"><tt>sqldf.lisp</tt></a> (file)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27685_2769"><tt>sqldf.lisp</tt></a>.
 </p></dd>
 </dl>
 </dd></dl>
-<dl>
-<dt id="index-execute_002dto_002dcolumn">Function: <strong>execute-to-column</strong> <em>DB SQL &amp;rest PARAMETERS</em></dt>
-<dd><span id="go-to-the-SQLDF_2236_2236EXECUTE_002dTO_002dCOLUMN-function"></span><span id="index-Function_002c-execute_002dto_002dcolumn"></span>
+<dl class="def">
+<dt id="index-execute_002dto_002dcolumn"><span class="category">Function: </span><span><strong>execute-to-column</strong> <em>(db sql &amp;rest parameters)</em><a href='#index-execute_002dto_002dcolumn' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="g_t_276813_2769"></span><span id="index-Function_002c-execute_002dto_002dcolumn"></span>
 <dl compact="compact">
-<dt><strong>Package</strong></dt>
-<dd><p><a href="#go-to-the-SQLDF-package"><tt>sqldf</tt></a>
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="#g_t_27686_2769"><tt>sqldf</tt></a>.
 </p></dd>
-<dt><strong>Source</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27684_2769"><tt>utils.lisp</tt></a>.
 </p></dd>
 </dl>
 </dd></dl>
-<dl>
-<dt id="index-from_002dsql_002dname">Function: <strong>from-sql-name</strong> <em>STR</em></dt>
-<dd><span id="go-to-the-SQLDF_2236_2236FROM_002dSQL_002dNAME-function"></span><span id="index-Function_002c-from_002dsql_002dname"></span>
+<dl class="def">
+<dt id="index-from_002dsql_002dname"><span class="category">Function: </span><span><strong>from-sql-name</strong> <em>(str)</em><a href='#index-from_002dsql_002dname' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="g_t_276812_2769"></span><span id="index-Function_002c-from_002dsql_002dname"></span>
 <p>Convert a string to a symbol, upcasing and replacing underscores with
 hyphens.
 </p><dl compact="compact">
-<dt><strong>Package</strong></dt>
-<dd><p><a href="#go-to-the-SQLDF-package"><tt>sqldf</tt></a>
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="#g_t_27686_2769"><tt>sqldf</tt></a>.
 </p></dd>
-<dt><strong>Source</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27684_2769"><tt>utils.lisp</tt></a>.
 </p></dd>
 </dl>
 </dd></dl>
-<dl>
-<dt id="index-sqlite_002dcolumn_002dtype">Function: <strong>sqlite-column-type</strong> <em>SEQUENCE</em></dt>
-<dd><span id="go-to-the-SQLDF_2236_2236SQLITE_002dCOLUMN_002dTYPE-function"></span><span id="index-Function_002c-sqlite_002dcolumn_002dtype"></span>
+<dl class="def">
+<dt id="index-sqlite_002dcolumn_002dtype"><span class="category">Function: </span><span><strong>sqlite-column-type</strong> <em>(sequence)</em><a href='#index-sqlite_002dcolumn_002dtype' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="g_t_276816_2769"></span><span id="index-Function_002c-sqlite_002dcolumn_002dtype"></span>
 <p>Return a format string for the most general type found in sequence<br>
 Use this for sequences of type T to determine how to declare the column to SQLite.
 </p><dl compact="compact">
-<dt><strong>Package</strong></dt>
-<dd><p><a href="#go-to-the-SQLDF-package"><tt>sqldf</tt></a>
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="#g_t_27686_2769"><tt>sqldf</tt></a>.
 </p></dd>
-<dt><strong>Source</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27684_2769"><tt>utils.lisp</tt></a>.
 </p></dd>
 </dl>
 </dd></dl>
-<dl>
-<dt id="index-statement_002dcolumn_002dtype">Function: <strong>statement-column-type</strong> <em>STMT COLUMN-NUMBER</em></dt>
-<dd><span id="go-to-the-SQLDF_2236_2236STATEMENT_002dCOLUMN_002dTYPE-function"></span><span id="index-Function_002c-statement_002dcolumn_002dtype"></span>
+<dl class="def">
+<dt id="index-statement_002dcolumn_002dtype"><span class="category">Function: </span><span><strong>statement-column-type</strong> <em>(stmt column-number)</em><a href='#index-statement_002dcolumn_002dtype' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="g_t_276810_2769"></span><span id="index-Function_002c-statement_002dcolumn_002dtype"></span>
 <p>Return the type string of a column of a query statement
 </p><dl compact="compact">
-<dt><strong>Package</strong></dt>
-<dd><p><a href="#go-to-the-SQLDF-package"><tt>sqldf</tt></a>
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="#g_t_27686_2769"><tt>sqldf</tt></a>.
 </p></dd>
-<dt><strong>Source</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27684_2769"><tt>utils.lisp</tt></a>.
 </p></dd>
 </dl>
 </dd></dl>
-<dl>
-<dt id="index-to_002dsql_002dname">Function: <strong>to-sql-name</strong> <em>()</em></dt>
-<dd><span id="go-to-the-SQLDF_2236_2236TO_002dSQL_002dNAME-function"></span><span id="index-Function_002c-to_002dsql_002dname"></span>
+<dl class="def">
+<dt id="index-to_002dsql_002dname"><span class="category">Function: </span><span><strong>to-sql-name</strong> <em>()</em><a href='#index-to_002dsql_002dname' class='copiable-anchor'> &para;</a></span></dt>
+<dd><span id="g_t_276811_2769"></span><span id="index-Function_002c-to_002dsql_002dname"></span>
 <p>Convert a symbol or string into a name that can be a sql table, column, or
 operation name. Add quotes when escape-p is true, or escape-p is :auto and the
 name contains reserved words. Quoted or delimited identifiers can be used by
@@ -631,11 +586,11 @@ hyphen and forward slash characters are not replaced with underscores.
 Ignore-reserved-words is only used internally for column names which are allowed
 to be reserved words, but it is not recommended.
 </p><dl compact="compact">
-<dt><strong>Package</strong></dt>
-<dd><p><a href="#go-to-the-SQLDF-package"><tt>sqldf</tt></a>
+<dt><span><strong>Package</strong></span></dt>
+<dd><p><a href="#g_t_27686_2769"><tt>sqldf</tt></a>.
 </p></dd>
-<dt><strong>Source</strong></dt>
-<dd><p><a href="#go-to-the-sqldf_002futils_2024lisp-file"><tt>utils.lisp</tt></a> (file)
+<dt><span><strong>Source</strong></span></dt>
+<dd><p><a href="#g_t_27684_2769"><tt>utils.lisp</tt></a>.
 </p></dd>
 </dl>
 </dd></dl>
@@ -643,74 +598,23 @@ to be reserved words, but it is not recommended.
 
 
 <hr>
-<span id="Indexes"></span><div class="header">
-<p>
-Previous: <a href="#Definitions" accesskey="p" rel="prev">Definitions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
+</div>
+</div>
+<div class="appendix" id="Indexes">
 <span id="Indexes-1"></span><h2 class="appendix">Appendix A Indexes</h2>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Concept-index" rel="index" accesskey="1">Concept index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Function-index" rel="index" accesskey="2">Function index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Variable-index" rel="index" accesskey="3">Variable index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Data-type-index" rel="index" accesskey="4">Data type index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 
 <hr>
-<span id="Concept-index"></span><div class="header">
-<p>
-Next: <a href="#Function-index" accesskey="n" rel="next">Function index</a>, Previous: <a href="#Indexes" accesskey="p" rel="prev">Indexes</a>, Up: <a href="#Indexes" accesskey="u" rel="up">Indexes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
-</div>
+<div class="appendixsec" id="Concept-index">
 <span id="Concepts"></span><h3 class="appendixsec">A.1 Concepts</h3>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Concept-index_cp_letter-F"><b>F</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Concept-index_cp_letter-L"><b>L</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Concept-index_cp_letter-S"><b>S</b></a>
- &nbsp; 
-</td></tr></table>
-<table class="index-cp" border="0">
-<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="Concept-index_cp_letter-F">F</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-File_002c-Lisp_002c-sqldf_002easd">File, Lisp, <tt>sqldf.asd</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_2024asd-file">The sqldf․asd file</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-File_002c-Lisp_002c-sqldf_002fpkgdcl_002elisp">File, Lisp, <tt>sqldf/pkgdcl.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002fpkgdcl_2024lisp-file">The sqldf/pkgdcl․lisp file</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-File_002c-Lisp_002c-sqldf_002fsqldf_002elisp">File, Lisp, <tt>sqldf/sqldf.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002fsqldf_2024lisp-file">The sqldf/sqldf․lisp file</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-File_002c-Lisp_002c-sqldf_002futils_002elisp">File, Lisp, <tt>sqldf/utils.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002futils_2024lisp-file">The sqldf/utils․lisp file</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="Concept-index_cp_letter-L">L</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Lisp-File_002c-sqldf_002easd">Lisp File, <tt>sqldf.asd</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_2024asd-file">The sqldf․asd file</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Lisp-File_002c-sqldf_002fpkgdcl_002elisp">Lisp File, <tt>sqldf/pkgdcl.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002fpkgdcl_2024lisp-file">The sqldf/pkgdcl․lisp file</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Lisp-File_002c-sqldf_002fsqldf_002elisp">Lisp File, <tt>sqldf/sqldf.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002fsqldf_2024lisp-file">The sqldf/sqldf․lisp file</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Lisp-File_002c-sqldf_002futils_002elisp">Lisp File, <tt>sqldf/utils.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002futils_2024lisp-file">The sqldf/utils․lisp file</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="Concept-index_cp_letter-S">S</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-sqldf_002easd"><tt>sqldf.asd</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_2024asd-file">The sqldf․asd file</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-sqldf_002fpkgdcl_002elisp"><tt>sqldf/pkgdcl.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002fpkgdcl_2024lisp-file">The sqldf/pkgdcl․lisp file</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-sqldf_002fsqldf_002elisp"><tt>sqldf/sqldf.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002fsqldf_2024lisp-file">The sqldf/sqldf․lisp file</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-sqldf_002futils_002elisp"><tt>sqldf/utils.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002futils_2024lisp-file">The sqldf/utils․lisp file</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-</table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Concept-index_cp_letter-F"><b>F</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Concept-index_cp_letter-L"><b>L</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Concept-index_cp_letter-S"><b>S</b></a>
- &nbsp; 
-</td></tr></table>
 
 
 
 <hr>
-<span id="Function-index"></span><div class="header">
-<p>
-Next: <a href="#Variable-index" accesskey="n" rel="next">Variable index</a>, Previous: <a href="#Concept-index" accesskey="p" rel="prev">Concept index</a>, Up: <a href="#Indexes" accesskey="u" rel="up">Indexes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
-<span id="Functions-2"></span><h3 class="appendixsec">A.2 Functions</h3>
+<div class="appendixsec" id="Function-index">
+<span id="Functions"></span><h3 class="appendixsec">A.2 Functions</h3>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Function-index_fn_letter-C"><b>C</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Function-index_fn_letter-E"><b>E</b></a>
@@ -730,36 +634,36 @@ Next: <a href="#Variable-index" accesskey="n" rel="next">Variable index</a>, Pre
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Function-index_fn_letter-C">C</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-create_002ddf_002dtable"><code>create-df-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-create_002ddf_002dtable"><code>create-df-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-ordinary-functions">Private ordinary functions</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Function-index_fn_letter-E">E</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-execute_002dto_002dcolumn"><code>execute-to-column</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-execute_002dto_002dcolumn"><code>execute-to-column</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-ordinary-functions">Private ordinary functions</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Function-index_fn_letter-F">F</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-from_002dsql_002dname"><code>from-sql-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Function_002c-create_002ddf_002dtable"><code><span class="roman">Function, </span>create-df-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Function_002c-execute_002dto_002dcolumn"><code><span class="roman">Function, </span>execute-to-column</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Function_002c-from_002dsql_002dname"><code><span class="roman">Function, </span>from-sql-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Function_002c-read_002dtable"><code><span class="roman">Function, </span>read-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Function_002c-sqldf"><code><span class="roman">Function, </span>sqldf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Function_002c-sqlite_002dcolumn_002dtype"><code><span class="roman">Function, </span>sqlite-column-type</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Function_002c-statement_002dcolumn_002dtype"><code><span class="roman">Function, </span>statement-column-type</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Function_002c-to_002dsql_002dname"><code><span class="roman">Function, </span>to-sql-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Function_002c-write_002dtable"><code><span class="roman">Function, </span>write-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-from_002dsql_002dname"><code>from-sql-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-ordinary-functions">Private ordinary functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-create_002ddf_002dtable"><code><span class="roman">Function, </span>create-df-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-ordinary-functions">Private ordinary functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-execute_002dto_002dcolumn"><code><span class="roman">Function, </span>execute-to-column</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-ordinary-functions">Private ordinary functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-from_002dsql_002dname"><code><span class="roman">Function, </span>from-sql-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-ordinary-functions">Private ordinary functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-read_002dtable"><code><span class="roman">Function, </span>read-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Public-ordinary-functions">Public ordinary functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-sqldf"><code><span class="roman">Function, </span>sqldf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Public-ordinary-functions">Public ordinary functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-sqlite_002dcolumn_002dtype"><code><span class="roman">Function, </span>sqlite-column-type</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-ordinary-functions">Private ordinary functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-statement_002dcolumn_002dtype"><code><span class="roman">Function, </span>statement-column-type</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-ordinary-functions">Private ordinary functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-to_002dsql_002dname"><code><span class="roman">Function, </span>to-sql-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-ordinary-functions">Private ordinary functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-write_002dtable"><code><span class="roman">Function, </span>write-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Public-ordinary-functions">Public ordinary functions</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Function-index_fn_letter-R">R</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-read_002dtable"><code>read-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-read_002dtable"><code>read-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Public-ordinary-functions">Public ordinary functions</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Function-index_fn_letter-S">S</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-sqldf"><code>sqldf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-sqlite_002dcolumn_002dtype"><code>sqlite-column-type</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-statement_002dcolumn_002dtype"><code>statement-column-type</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sqldf"><code>sqldf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Public-ordinary-functions">Public ordinary functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sqlite_002dcolumn_002dtype"><code>sqlite-column-type</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-ordinary-functions">Private ordinary functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-statement_002dcolumn_002dtype"><code>statement-column-type</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-ordinary-functions">Private ordinary functions</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Function-index_fn_letter-T">T</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-to_002dsql_002dname"><code>to-sql-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-to_002dsql_002dname"><code>to-sql-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-ordinary-functions">Private ordinary functions</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Function-index_fn_letter-W">W</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-write_002dtable"><code>write-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-write_002dtable"><code>write-table</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Public-ordinary-functions">Public ordinary functions</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Function-index_fn_letter-C"><b>C</b></a>
@@ -781,10 +685,8 @@ Next: <a href="#Variable-index" accesskey="n" rel="next">Variable index</a>, Pre
 
 
 <hr>
-<span id="Variable-index"></span><div class="header">
-<p>
-Next: <a href="#Data-type-index" accesskey="n" rel="next">Data type index</a>, Previous: <a href="#Function-index" accesskey="p" rel="prev">Function index</a>, Up: <a href="#Indexes" accesskey="u" rel="up">Indexes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
+<div class="appendixsec" id="Variable-index">
 <span id="Variables"></span><h3 class="appendixsec">A.3 Variables</h3>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Variable-index_vr_symbol-1"><b>*</b></a>
  &nbsp; 
@@ -796,14 +698,14 @@ Next: <a href="#Data-type-index" accesskey="n" rel="next">Data type index</a>, P
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Variable-index_vr_symbol-1">*</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_002adowncase_002dsymbols_002a"><code>*downcase-symbols*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-special-variables">Internal special variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_002aescape_002dsql_002dnames_002dp_002a"><code>*escape-sql-names-p*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-special-variables">Internal special variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-_002asqlite_002dreserved_002dwords_002a"><code>*sqlite-reserved-words*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-special-variables">Internal special variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_002adowncase_002dsymbols_002a"><code>*downcase-symbols*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-special-variables">Private special variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_002aescape_002dsql_002dnames_002dp_002a"><code>*escape-sql-names-p*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-special-variables">Private special variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-_002asqlite_002dreserved_002dwords_002a"><code>*sqlite-reserved-words*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-special-variables">Private special variables</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Variable-index_vr_letter-S">S</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Special-Variable_002c-_002adowncase_002dsymbols_002a"><code><span class="roman">Special Variable, </span>*downcase-symbols*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-special-variables">Internal special variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Special-Variable_002c-_002aescape_002dsql_002dnames_002dp_002a"><code><span class="roman">Special Variable, </span>*escape-sql-names-p*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-special-variables">Internal special variables</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Special-Variable_002c-_002asqlite_002dreserved_002dwords_002a"><code><span class="roman">Special Variable, </span>*sqlite-reserved-words*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-special-variables">Internal special variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Special-Variable_002c-_002adowncase_002dsymbols_002a"><code><span class="roman">Special Variable, </span>*downcase-symbols*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-special-variables">Private special variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Special-Variable_002c-_002aescape_002dsql_002dnames_002dp_002a"><code><span class="roman">Special Variable, </span>*escape-sql-names-p*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-special-variables">Private special variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Special-Variable_002c-_002asqlite_002dreserved_002dwords_002a"><code><span class="roman">Special Variable, </span>*sqlite-reserved-words*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Private-special-variables">Private special variables</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Variable-index_vr_symbol-1"><b>*</b></a>
@@ -816,35 +718,55 @@ Next: <a href="#Data-type-index" accesskey="n" rel="next">Data type index</a>, P
 
 
 <hr>
-<span id="Data-type-index"></span><div class="header">
-<p>
-Previous: <a href="#Variable-index" accesskey="p" rel="prev">Variable index</a>, Up: <a href="#Indexes" accesskey="u" rel="up">Indexes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
 </div>
+<div class="appendixsec" id="Data-type-index">
 <span id="Data-types"></span><h3 class="appendixsec">A.4 Data types</h3>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Data-type-index_tp_letter-P"><b>P</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Data-type-index_tp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Data-type-index_tp_letter-P"><b>P</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Data-type-index_tp_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Data-type-index_tp_letter-U"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
 <table class="index-tp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Data-type-index_tp_letter-F">F</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File_002c-pkgdcl_002elisp"><code>File, <tt>pkgdcl.lisp</tt></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002fpkgdcl_2024lisp-file">The sqldf/pkgdcl․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File_002c-sqldf_002easd"><code>File, <tt>sqldf.asd</tt></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002fsqldf_2024asd-file">The sqldf/sqldf․asd file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File_002c-sqldf_002elisp"><code>File, <tt>sqldf.lisp</tt></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002fsqldf_2024lisp-file">The sqldf/sqldf․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File_002c-utils_002elisp"><code>File, <tt>utils.lisp</tt></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002futils_2024lisp-file">The sqldf/utils․lisp file</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Data-type-index_tp_letter-P">P</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Package_002c-sqldf"><code><span class="roman">Package, </span>sqldf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf-package">The sqldf package</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-pkgdcl_002elisp"><code><tt>pkgdcl.lisp</tt></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002fpkgdcl_2024lisp-file">The sqldf/pkgdcl․lisp file</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th id="Data-type-index_tp_letter-S">S</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sqldf-1"><code>sqldf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf-system">The sqldf system</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sqldf-2"><code>sqldf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf-package">The sqldf package</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sqldf_002easd"><code><tt>sqldf.asd</tt></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002fsqldf_2024asd-file">The sqldf/sqldf․asd file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sqldf_002elisp"><code><tt>sqldf.lisp</tt></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002fsqldf_2024lisp-file">The sqldf/sqldf․lisp file</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-System_002c-sqldf"><code><span class="roman">System, </span>sqldf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf-system">The sqldf system</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Data-type-index_tp_letter-U">U</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-utils_002elisp"><code><tt>utils.lisp</tt></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-sqldf_002futils_2024lisp-file">The sqldf/utils․lisp file</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Data-type-index_tp_letter-P"><b>P</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Data-type-index_tp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Data-type-index_tp_letter-P"><b>P</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Data-type-index_tp_letter-S"><b>S</b></a>
  &nbsp; 
+<a class="summary-letter" href="#Data-type-index_tp_letter-U"><b>U</b></a>
+ &nbsp; 
 </td></tr></table>
 
-<hr>
+</div>
+</div>
+</div>
 
 
 

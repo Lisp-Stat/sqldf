@@ -165,7 +165,7 @@ and query it:
 ;; 2 virginica        50
 ```
 
-For more examples, please refer to the [Documentation](https://lisp-stat.dev/docs/tasks/sql).
+For more examples, please refer to the [Documentation](https://lisp-stat.dev/docs/manuals/sqldf).
 
 
 <!-- ROADMAP -->
